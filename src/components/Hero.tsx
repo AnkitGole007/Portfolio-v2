@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react'
+import { Github, Linkedin, ArrowDown } from 'lucide-react'
 import { useRoleTyping } from '@/hooks'
 
 const roles = [
@@ -7,12 +7,6 @@ const roles = [
   'LLM Fine-Tuning Specialist',
   'ML Engineer',
   'Applied LLM Researcher'
-]
-
-const socialLinks = [
-  { icon: Github, href: 'https://github.com/AnkitGole007', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://www.linkedin.com/in/ankit-gole', label: 'LinkedIn' },
-  { icon: Mail, href: 'mailto:ankit17.gole@gmail.com', label: 'Email' }
 ]
 
 export function Hero() {
@@ -23,98 +17,176 @@ export function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+      {/* Floating background circles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <motion.p
-            className="text-primary font-medium mb-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            Hello, I'm
-          </motion.p>
+          className="absolute top-20 left-20 w-32 h-32 rounded-full bg-primary/10 blur-xl"
+          animate={{ y: [0, 20, 0], x: [0, 10, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <motion.div
+          className="absolute top-40 right-1/3 w-4 h-4 rounded-full bg-primary/40"
+          animate={{ y: [0, -15, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <motion.div
+          className="absolute top-1/4 right-1/4 w-20 h-20 rounded-full border border-primary/20"
+          animate={{ scale: [1, 1.1, 1], rotate: [0, 180, 360] }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+        />
+        <motion.div
+          className="absolute bottom-40 left-1/4 w-24 h-24 rounded-full bg-primary/5 blur-lg"
+          animate={{ y: [0, -20, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <motion.div
+          className="absolute bottom-32 right-1/3 w-16 h-16 rounded-full bg-primary/10 blur-md"
+          animate={{ x: [0, 15, 0] }}
+          transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+        />
+      </div>
 
-          <motion.h1
-            className="font-display text-5xl md:text-7xl font-bold mb-6 glow-text"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-          >
-            <span className="gradient-text">Ankit Gole</span>
-          </motion.h1>
-
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+          {/* Left Content */}
           <motion.div
-            className="text-xl md:text-2xl text-muted-foreground mb-8 h-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-left"
           >
-            <span>{displayText}</span>
-            <span className="typing-cursor text-primary">|</span>
-          </motion.div>
+            <motion.h1
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              Hi, I'm <span className="gradient-text">Ankit Gole</span>
+            </motion.h1>
 
-          <motion.p
-            className="text-muted-foreground max-w-2xl mx-auto mb-4 text-lg"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
-            Specializing in LLM fine-tuning, retrieval systems, and evaluation for commerce signals and user behavior modeling.
-          </motion.p>
+            <motion.div
+              className="text-lg md:text-xl text-muted-foreground mb-6 flex items-center gap-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
+              <span>I am an</span>
+              <span className="text-primary font-medium">{displayText}</span>
+              <span className="typing-cursor text-primary">|</span>
+            </motion.div>
 
-          <motion.p
-            className="text-primary/80 max-w-2xl mx-auto mb-10 text-sm font-medium"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.55 }}
-          >
-            MS in Artificial Intelligence @ WPI (GPA: 3.88) | Applied LLM Researcher @ PayPal GQP
-          </motion.p>
+            <motion.p
+              className="text-muted-foreground max-w-xl mb-8 text-base leading-relaxed"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+            >
+              I design, build, and deploy intelligent AI systems that bridge research and real-world application. From self-healing LLM pipelines to complete workflow automation, I create scalable solutions that solve operational problems.
+            </motion.p>
 
-          {/* Social Links */}
-          <motion.div
-            className="flex items-center justify-center gap-4 mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-          >
-            {socialLinks.map((link, index) => (
+            {/* CTA Buttons */}
+            <motion.div
+              className="flex flex-wrap items-center gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
               <motion.a
-                key={link.label}
-                href={link.href}
+                href="#projects"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                View Projects
+              </motion.a>
+
+              <motion.a
+                href="https://github.com/AnkitGole007"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-secondary/80 backdrop-blur-sm border border-border hover:bg-primary/20 hover:border-primary transition-all"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.9 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 + index * 0.1 }}
-                aria-label={link.label}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-secondary/80 border border-border text-foreground font-medium hover:bg-secondary transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <link.icon className="w-5 h-5 text-foreground" />
+                <Github className="w-5 h-5" />
+                GitHub
               </motion.a>
-            ))}
+
+              <motion.a
+                href="https://www.linkedin.com/in/ankit-gole"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-foreground font-medium hover:text-primary transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Linkedin className="w-5 h-5" />
+                LinkedIn
+              </motion.a>
+            </motion.div>
           </motion.div>
 
-          {/* CTA Button */}
-          <motion.a
-            href="#skills"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
+          {/* Right - Profile Photo */}
+          <motion.div
+            className="relative flex items-center justify-center lg:justify-end"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Explore My Skills
-            <ArrowDown className="w-4 h-4" />
-          </motion.a>
-        </motion.div>
+            <div className="relative">
+              {/* Outer rotating ring */}
+              <motion.div
+                className="absolute inset-0 w-[320px] h-[320px] md:w-[380px] md:h-[380px] rounded-full border-2 border-primary/30"
+                style={{ margin: '-20px' }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+              />
+
+              {/* Inner decorative ring */}
+              <motion.div
+                className="absolute inset-0 w-[300px] h-[300px] md:w-[360px] md:h-[360px] rounded-full border border-primary/20"
+                style={{ margin: '-10px' }}
+                animate={{ rotate: -360 }}
+                transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+              />
+
+              {/* Small decorative dots on ring */}
+              <motion.div
+                className="absolute top-0 right-1/4 w-2 h-2 rounded-full bg-primary/60"
+                animate={{ scale: [1, 1.5, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+              <motion.div
+                className="absolute top-1/4 right-0 w-3 h-3 rounded-full border border-primary/40"
+                animate={{ scale: [1, 1.3, 1] }}
+                transition={{ duration: 3, repeat: Infinity }}
+              />
+
+              {/* Profile image container */}
+              <div className="relative w-[280px] h-[280px] md:w-[340px] md:h-[340px] rounded-full overflow-hidden border-4 border-primary/50 shadow-2xl shadow-primary/20">
+                <img
+                  src="/profile.jpeg"
+                  alt="Ankit Gole"
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                />
+
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent" />
+              </div>
+
+              {/* Initials badge */}
+              <motion.div
+                className="absolute -bottom-2 -right-2 w-14 h-14 md:w-16 md:h-16 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-lg md:text-xl shadow-lg"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.8, type: 'spring', stiffness: 200 }}
+                whileHover={{ scale: 1.1 }}
+              >
+                AG
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Scroll Indicator */}
