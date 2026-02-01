@@ -1,4 +1,4 @@
-import { ThemeToggle, Navigation, Hero, Skills, Projects, Contact, Footer, ParallaxBackground } from '@/components'
+import { ThemeToggle, Navigation, Hero, Skills, Experience, Projects, Contact, Footer, ParallaxBackground } from '@/components'
 
 function App() {
   return (
@@ -12,6 +12,7 @@ function App() {
       <main className="relative z-10">
         <Hero />
         <Skills />
+        <Experience />
         <Projects />
         <Contact />
       </main>
