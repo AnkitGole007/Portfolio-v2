@@ -1,118 +1,136 @@
-import { useEffect, useState, useMemo } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { useEffect, useState, useRef } from 'react'
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 
 interface Particle {
   id: number
   x: number
-  y: number
+  initialY: number
   size: number
   speedFactor: number
-  opacity: number
-  color: 'purple' | 'pink' | 'blue'
-}
-
-const colorMap = {
-  purple: 'rgba(124, 58, 237, 0.15)',
-  pink: 'rgba(236, 72, 153, 0.12)',
-  blue: 'rgba(59, 130, 246, 0.1)'
-}
-
-const colorMapDark = {
-  purple: 'rgba(139, 92, 246, 0.25)',
-  pink: 'rgba(244, 114, 182, 0.2)',
-  blue: 'rgba(96, 165, 250, 0.18)'
+  color: string
+  blur: number
 }
 
 export function ParallaxBackground() {
-  const [windowHeight, setWindowHeight] = useState(0)
-  const { scrollY } = useScroll()
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [particles, setParticles] = useState<Particle[]>([])
+
+  const { scrollYProgress } = useScroll()
+
+  // Smooth spring animation for scroll
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  })
 
   useEffect(() => {
-    setWindowHeight(window.innerHeight)
-    const handleResize = () => setWindowHeight(window.innerHeight)
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
+    // Generate particles on mount
+    const colors = [
+      'rgba(139, 92, 246, 0.4)',   // Purple
+      'rgba(168, 85, 247, 0.35)',  // Violet
+      'rgba(236, 72, 153, 0.3)',   // Pink
+      'rgba(59, 130, 246, 0.35)',  // Blue
+      'rgba(192, 132, 252, 0.3)',  // Light purple
+    ]
 
-  const particles = useMemo<Particle[]>(() => {
-    return Array.from({ length: 25 }, (_, i) => ({
+    const generatedParticles: Particle[] = Array.from({ length: 20 }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
-      y: Math.random() * 400, // Spread across more vertical space
-      size: Math.random() * 150 + 80,
-      speedFactor: 0.1 + Math.random() * 0.4, // Different parallax speeds
-      opacity: 0.3 + Math.random() * 0.4,
-      color: (['purple', 'pink', 'blue'] as const)[Math.floor(Math.random() * 3)]
+      initialY: Math.random() * 100,
+      size: 150 + Math.random() * 250,
+      speedFactor: 0.3 + Math.random() * 0.7, // Different parallax speeds
+      color: colors[Math.floor(Math.random() * colors.length)],
+      blur: 60 + Math.random() * 40
     }))
+
+    setParticles(generatedParticles)
   }, [])
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div
+      ref={containerRef}
+      className="fixed inset-0 overflow-hidden pointer-events-none"
+      style={{ zIndex: 0 }}
+    >
+      {/* Base gradient overlay */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'radial-gradient(ellipse at 50% 0%, rgba(139, 92, 246, 0.15) 0%, transparent 50%)'
+        }}
+      />
+
       {particles.map((particle) => (
         <ParallaxParticle
           key={particle.id}
           particle={particle}
-          scrollY={scrollY}
-          windowHeight={windowHeight}
+          scrollProgress={smoothProgress}
         />
       ))}
+
+      {/* Bottom gradient for depth */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'radial-gradient(ellipse at 50% 100%, rgba(59, 130, 246, 0.1) 0%, transparent 50%)'
+        }}
+      />
     </div>
   )
 }
 
 function ParallaxParticle({
   particle,
-  scrollY,
-  windowHeight
+  scrollProgress
 }: {
   particle: Particle
-  scrollY: ReturnType<typeof useScroll>['scrollY']
-  windowHeight: number
+  scrollProgress: ReturnType<typeof useSpring>
 }) {
-  // Each particle moves at different speed based on speedFactor
-  const y = useTransform(
-    scrollY,
-    [0, windowHeight * 5],
-    [particle.y, particle.y - 800 * particle.speedFactor]
+  // Each particle moves at different speed - some move more, some less
+  // This creates the parallax depth effect
+  const yMovement = useTransform(
+    scrollProgress,
+    [0, 1],
+    [0, -600 * particle.speedFactor]
   )
 
-  const x = useTransform(
-    scrollY,
-    [0, windowHeight * 5],
-    [0, (particle.speedFactor - 0.25) * 100]
+  // Slight horizontal movement for organic feel
+  const xMovement = useTransform(
+    scrollProgress,
+    [0, 1],
+    [0, (particle.speedFactor - 0.5) * 100]
+  )
+
+  // Scale slightly as you scroll for depth
+  const scale = useTransform(
+    scrollProgress,
+    [0, 0.5, 1],
+    [1, 1 + particle.speedFactor * 0.1, 1]
+  )
+
+  // Opacity changes for atmospheric effect
+  const opacity = useTransform(
+    scrollProgress,
+    [0, 0.3, 0.7, 1],
+    [1, 0.8, 0.9, 0.7]
   )
 
   return (
     <motion.div
-      className="absolute rounded-full blur-3xl"
+      className="absolute rounded-full"
       style={{
         left: `${particle.x}%`,
-        top: `${particle.y}%`,
+        top: `${particle.initialY}%`,
         width: particle.size,
         height: particle.size,
-        y,
-        x,
-        opacity: particle.opacity
+        background: `radial-gradient(circle at 30% 30%, ${particle.color}, transparent 70%)`,
+        filter: `blur(${particle.blur}px)`,
+        y: yMovement,
+        x: xMovement,
+        scale,
+        opacity
       }}
-    >
-      <div
-        className="w-full h-full rounded-full"
-        style={{
-          background: `radial-gradient(circle, var(--particle-color) 0%, transparent 70%)`
-        }}
-      >
-        <style>{`
-          .dark & { --particle-color: ${colorMapDark[particle.color]}; }
-          :not(.dark) & { --particle-color: ${colorMap[particle.color]}; }
-        `}</style>
-      </div>
-      {/* Fallback using CSS class */}
-      <div
-        className={`absolute inset-0 rounded-full dark:bg-gradient-radial-${particle.color}`}
-        style={{
-          background: `radial-gradient(circle, ${colorMapDark[particle.color]} 0%, transparent 70%)`
-        }}
-      />
-    </motion.div>
+    />
   )
 }
