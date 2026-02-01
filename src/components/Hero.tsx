@@ -165,7 +165,7 @@ export function Hero() {
               {/* Profile image container */}
               <div className="relative w-[280px] h-[280px] md:w-[340px] md:h-[340px] rounded-full overflow-hidden border-4 border-primary/50 shadow-2xl shadow-primary/20">
                 <img
-                  src="/profile.jpeg"
+                  src={`${import.meta.env.BASE_URL}profile.jpeg`}
                   alt="Ankit Gole"
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                 />
