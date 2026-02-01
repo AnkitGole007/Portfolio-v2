@@ -71,7 +71,7 @@ export function SkillBadge({ name, proficiency, delay = 0, color = 'purple' }: S
       whileTap={{ scale: 0.95 }}
     >
       <div
-        className="relative flex items-center justify-between gap-2 px-4 py-3 rounded-xl backdrop-blur-md border text-white font-medium text-sm shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl"
+        className="relative flex items-center justify-between gap-3 px-4 py-3 rounded-xl backdrop-blur-md border text-white font-medium text-sm shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl"
         style={{
           background: styles.background,
           borderColor: styles.border,
@@ -86,12 +86,12 @@ export function SkillBadge({ name, proficiency, delay = 0, color = 'purple' }: S
           }}
         />
 
-        <span className="relative min-w-0 truncate">
+        <span className="relative flex-1 text-left whitespace-nowrap">
           {displayText}
           {!typingComplete && <span className="typing-cursor">|</span>}
         </span>
         <span
-          className="relative flex-shrink-0 px-2 py-0.5 rounded-md text-xs font-bold backdrop-blur-sm"
+          className="relative flex-shrink-0 px-2.5 py-1 rounded-md text-xs font-bold backdrop-blur-sm"
           style={{
             background: 'rgba(255,255,255,0.15)',
             border: '1px solid rgba(255,255,255,0.2)'

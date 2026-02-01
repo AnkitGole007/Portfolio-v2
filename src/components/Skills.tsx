@@ -13,7 +13,7 @@ const skillCategories = [
       { name: 'Hugging Face', proficiency: 94 },
       { name: 'LoRA/QLoRA', proficiency: 90 },
       { name: 'RAG Systems', proficiency: 93 },
-      { name: 'Prompt Engineering', proficiency: 96 }
+      { name: 'Prompt Eng.', proficiency: 96 }
     ]
   },
   {
@@ -26,7 +26,7 @@ const skillCategories = [
       { name: 'Docker', proficiency: 92 },
       { name: 'Kubernetes', proficiency: 85 },
       { name: 'FastAPI', proficiency: 93 },
-      { name: 'CI/CD Pipelines', proficiency: 88 }
+      { name: 'CI/CD', proficiency: 88 }
     ]
   },
   {
@@ -96,8 +96,8 @@ export function Skills() {
                 </div>
               </div>
 
-              {/* Skills List */}
-              <div className="grid grid-cols-2 gap-3">
+              {/* Skills List - Single column for full text visibility */}
+              <div className="flex flex-col gap-3">
                 {category.skills.map((skill, skillIndex) => (
                   <SkillBadge
                     key={skill.name}
