@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react'
 import { useRoleTyping } from '@/hooks'
-import { FloatingBubbles } from './FloatingBubbles'
 
 const roles = [
   'Agentic AI Engineer',
@@ -24,8 +23,6 @@ export function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      <FloatingBubbles />
-
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -91,7 +88,7 @@ export function Hero() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-secondary/80 border border-border hover:bg-primary/20 hover:border-primary transition-all"
+                className="p-3 rounded-full bg-secondary/80 backdrop-blur-sm border border-border hover:bg-primary/20 hover:border-primary transition-all"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.9 }}
                 initial={{ opacity: 0, y: 20 }}

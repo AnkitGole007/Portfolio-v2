@@ -1,4 +1,5 @@
 export { FloatingBubbles } from './FloatingBubbles'
+export { ParallaxBackground } from './ParallaxBackground'
 export { ThemeToggle } from './ThemeToggle'
 export { Navigation } from './Navigation'
 export { Hero } from './Hero'
