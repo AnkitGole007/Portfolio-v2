@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useEffect, useMemo } from 'react'
+import { motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react'
 
 interface Project {
@@ -64,12 +64,32 @@ const projects: Project[] = [
   }
 ]
 
+// Pre-calculate card positions for smooth animation
+function calculateCardTransform(index: number, activeIndex: number, totalItems: number) {
+  const diff = index - activeIndex
+  const normalizedDiff = ((diff % totalItems) + totalItems) % totalItems
+  const adjustedDiff = normalizedDiff > totalItems / 2 ? normalizedDiff - totalItems : normalizedDiff
+
+  const anglePerItem = 60 // Degrees between each card
+  const angle = adjustedDiff * anglePerItem
+  const radians = (angle * Math.PI) / 180
+
+  const radius = 350
+  const x = Math.sin(radians) * radius
+  const z = (Math.cos(radians) - 1) * radius
+  const rotateY = -angle
+  const scale = 0.65 + (Math.cos(radians) + 1) * 0.175
+  const opacity = Math.abs(adjustedDiff) <= 2 ? 1 - Math.abs(adjustedDiff) * 0.15 : 0.4
+  const zIndex = Math.round((Math.cos(radians) + 1) * 50)
+
+  return { x, z, rotateY, scale, opacity, zIndex }
+}
+
 export function Projects() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
   const totalItems = projects.length
 
-  // Auto-rotate carousel
   useEffect(() => {
     if (!isAutoPlaying) return
 
@@ -90,43 +110,10 @@ export function Projects() {
     setActiveIndex((prev) => (prev + 1) % totalItems)
   }
 
-  // Calculate position for each card in the 3D carousel
-  const getCardStyle = (index: number) => {
-    const diff = index - activeIndex
-    const normalizedDiff = ((diff + totalItems) % totalItems)
-    const adjustedDiff = normalizedDiff > totalItems / 2 ? normalizedDiff - totalItems : normalizedDiff
-
-    // Angle for each card position (360 / total items)
-    const anglePerItem = 360 / totalItems
-    const angle = adjustedDiff * anglePerItem
-
-    // Convert angle to radians for calculations
-    const radians = (angle * Math.PI) / 180
-
-    // Calculate z-depth and x-position based on angle
-    const radius = 400 // Distance from center
-    const z = Math.cos(radians) * radius - radius
-    const x = Math.sin(radians) * radius
-
-    // Calculate rotation (cards face center)
-    const rotateY = -angle
-
-    // Scale based on z-depth (closer = larger)
-    const scale = 0.6 + (Math.cos(radians) + 1) * 0.2
-
-    // Opacity based on position
-    const opacity = Math.abs(adjustedDiff) <= 2 ? 1 - Math.abs(adjustedDiff) * 0.2 : 0.3
-
-    // Z-index (front cards on top)
-    const zIndex = Math.round((Math.cos(radians) + 1) * 50)
-
-    return {
-      transform: `translateX(${x}px) translateZ(${z}px) rotateY(${rotateY}deg) scale(${scale})`,
-      opacity,
-      zIndex,
-      transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
-    }
-  }
+  // Memoize card transforms to prevent unnecessary recalculations
+  const cardTransforms = useMemo(() => {
+    return projects.map((_, index) => calculateCardTransform(index, activeIndex, totalItems))
+  }, [activeIndex, totalItems])
 
   return (
     <section id="projects" className="py-32 px-4 overflow-hidden">
@@ -153,91 +140,104 @@ export function Projects() {
         {/* 3D Carousel Container */}
         <div
           className="relative h-[500px] flex items-center justify-center"
-          style={{ perspective: '1200px' }}
+          style={{ perspective: '1000px' }}
         >
-          {/* Carousel Track */}
           <div
             className="relative w-full h-full flex items-center justify-center"
             style={{ transformStyle: 'preserve-3d' }}
           >
-            <AnimatePresence mode="sync">
-              {projects.map((project, index) => {
-                const style = getCardStyle(index)
-                const isActive = index === activeIndex
+            {projects.map((project, index) => {
+              const transform = cardTransforms[index]
+              const isActive = index === activeIndex
 
-                return (
-                  <motion.div
-                    key={project.id}
-                    className="absolute cursor-pointer"
-                    style={{
-                      ...style,
-                      transformStyle: 'preserve-3d',
-                      width: '320px',
-                      height: '400px'
-                    }}
-                    onClick={() => {
+              return (
+                <motion.div
+                  key={project.id}
+                  className="absolute cursor-pointer"
+                  initial={false}
+                  animate={{
+                    x: transform.x,
+                    z: transform.z,
+                    rotateY: transform.rotateY,
+                    scale: transform.scale,
+                    opacity: transform.opacity
+                  }}
+                  transition={{
+                    type: 'spring',
+                    stiffness: 100,
+                    damping: 20,
+                    mass: 1
+                  }}
+                  style={{
+                    zIndex: transform.zIndex,
+                    transformStyle: 'preserve-3d',
+                    width: '320px',
+                    height: '420px'
+                  }}
+                  onClick={() => {
+                    if (!isActive) {
                       setIsAutoPlaying(false)
                       setActiveIndex(index)
+                    }
+                  }}
+                  whileHover={isActive ? { scale: transform.scale * 1.05 } : {}}
+                >
+                  <div
+                    className={`w-full h-full rounded-3xl p-6 flex flex-col ${project.gradient}`}
+                    style={{
+                      boxShadow: isActive
+                        ? '0 30px 60px -15px rgba(0, 0, 0, 0.5), 0 0 30px rgba(139, 92, 246, 0.15)'
+                        : '0 20px 40px -15px rgba(0, 0, 0, 0.3)',
+                      backfaceVisibility: 'hidden'
                     }}
-                    whileHover={isActive ? { scale: 1.05 } : {}}
                   >
-                    <div
-                      className={`w-full h-full rounded-3xl p-6 flex flex-col shadow-2xl ${project.gradient}`}
-                      style={{
-                        boxShadow: isActive
-                          ? '0 25px 60px -12px rgba(0, 0, 0, 0.6), 0 0 40px rgba(139, 92, 246, 0.2)'
-                          : '0 15px 40px -10px rgba(0, 0, 0, 0.4)',
-                        backfaceVisibility: 'hidden'
-                      }}
-                    >
-                      {/* Tags */}
-                      <div className="flex flex-wrap gap-2 mb-auto">
-                        {project.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-3 py-1.5 bg-black/25 backdrop-blur-sm rounded-full text-xs font-semibold text-white border border-white/10"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-
-                      {/* Content */}
-                      <div className="mt-auto pt-4">
-                        <h3 className="text-xl font-display font-bold text-white mb-3 leading-tight">
-                          {project.title}
-                        </h3>
-                        <p className="text-white/80 text-sm leading-relaxed mb-4 line-clamp-3">
-                          {project.description}
-                        </p>
-
-                        {project.highlight && (
-                          <p className="text-white font-semibold text-sm mb-4 flex items-center gap-2">
-                            <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                            {project.highlight}
-                          </p>
-                        )}
-
-                        {project.link && isActive && (
-                          <motion.a
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold hover:bg-white/30 transition-colors border border-white/20"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            <ExternalLink className="w-4 h-4" />
-                            View Project
-                          </motion.a>
-                        )}
-                      </div>
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-3 py-1.5 bg-black/20 backdrop-blur-sm rounded-full text-xs font-semibold text-white border border-white/10"
+                        >
+                          {tag}
+                        </span>
+                      ))}
                     </div>
-                  </motion.div>
-                )
-              })}
-            </AnimatePresence>
+
+                    {/* Content */}
+                    <div className="mt-auto pt-6">
+                      <h3 className="text-xl font-display font-bold text-white mb-3 leading-tight">
+                        {project.title}
+                      </h3>
+                      <p className="text-white/80 text-sm leading-relaxed mb-4 line-clamp-3">
+                        {project.description}
+                      </p>
+
+                      {project.highlight && (
+                        <p className="text-white font-semibold text-sm mb-4 flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                          {project.highlight}
+                        </p>
+                      )}
+
+                      {project.link && isActive && (
+                        <motion.a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold hover:bg-white/30 transition-colors border border-white/20"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                          View Project
+                        </motion.a>
+                      )}
+                    </div>
+                  </div>
+                </motion.div>
+              )
+            })}
           </div>
         </div>
 
