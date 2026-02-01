@@ -162,16 +162,26 @@ export function Hero() {
                 transition={{ duration: 3, repeat: Infinity }}
               />
 
-              {/* Profile image container */}
-              <div className="relative w-[280px] h-[280px] md:w-[340px] md:h-[340px] rounded-full overflow-hidden border-4 border-primary/50 shadow-2xl shadow-primary/20">
+              {/* Profile image container with illumination */}
+              <div
+                className="relative w-[280px] h-[280px] md:w-[340px] md:h-[340px] rounded-full overflow-hidden border-4 border-primary"
+                style={{
+                  boxShadow: `
+                    0 0 30px rgba(139, 92, 246, 0.6),
+                    0 0 60px rgba(139, 92, 246, 0.4),
+                    0 0 90px rgba(139, 92, 246, 0.3),
+                    inset 0 0 30px rgba(139, 92, 246, 0.2)
+                  `
+                }}
+              >
                 <img
                   src={`${import.meta.env.BASE_URL}profile.jpeg`}
                   alt="Ankit Gole"
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                  className="w-full h-full object-cover"
                 />
 
                 {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-primary/10" />
               </div>
 
               {/* Initials badge */}
