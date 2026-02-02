@@ -81,7 +81,7 @@ export function Hero() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
-              I design, build, and deploy intelligent AI systems that bridge research and real-world application. From self-healing LLM pipelines to complete workflow automation, I create scalable solutions that solve operational problems.
+              I'm passionate about designing, building, and deploying intelligent AI systems that transform research into real-world impact. I specialize in creating production-ready LLM solutions—from self-healing pipelines that adapt autonomously to end-to-end workflow automation that scales. My work focuses on solving operational challenges with measurable outcomes: cost reduction, efficiency gains, and enterprise-grade reliability.
             </motion.p>
 
             {/* CTA Buttons */}
