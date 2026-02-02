@@ -64,23 +64,71 @@ const projects: Project[] = [
   }
 ]
 
-// Pre-calculate card positions for smooth animation
+// Calculate card positions for 3-card prominent display
 function calculateCardTransform(index: number, activeIndex: number, totalItems: number) {
   const diff = index - activeIndex
   const normalizedDiff = ((diff % totalItems) + totalItems) % totalItems
   const adjustedDiff = normalizedDiff > totalItems / 2 ? normalizedDiff - totalItems : normalizedDiff
 
-  const anglePerItem = 60 // Degrees between each card
-  const angle = adjustedDiff * anglePerItem
-  const radians = (angle * Math.PI) / 180
+  // Position: -1 = left, 0 = center, 1 = right, others = back
+  const position = adjustedDiff
 
-  const radius = 350
-  const x = Math.sin(radians) * radius
-  const z = (Math.cos(radians) - 1) * radius
-  const rotateY = -angle
-  const scale = 0.65 + (Math.cos(radians) + 1) * 0.175
-  const opacity = Math.abs(adjustedDiff) <= 2 ? 1 - Math.abs(adjustedDiff) * 0.15 : 0.4
-  const zIndex = Math.round((Math.cos(radians) + 1) * 50)
+  let x = 0
+  let z = 0
+  let rotateY = 0
+  let scale = 0.6
+  let opacity = 0.3
+  let zIndex = 0
+
+  if (position === 0) {
+    // Center card - front and prominent
+    x = 0
+    z = 0
+    rotateY = 0
+    scale = 1
+    opacity = 1
+    zIndex = 100
+  } else if (position === -1) {
+    // Left card - visible and angled
+    x = -320
+    z = -100
+    rotateY = 35
+    scale = 0.85
+    opacity = 1
+    zIndex = 80
+  } else if (position === 1) {
+    // Right card - visible and angled
+    x = 320
+    z = -100
+    rotateY = -35
+    scale = 0.85
+    opacity = 1
+    zIndex = 80
+  } else if (position === -2) {
+    // Far left - partially visible
+    x = -500
+    z = -250
+    rotateY = 50
+    scale = 0.65
+    opacity = 0.5
+    zIndex = 40
+  } else if (position === 2) {
+    // Far right - partially visible
+    x = 500
+    z = -250
+    rotateY = -50
+    scale = 0.65
+    opacity = 0.5
+    zIndex = 40
+  } else {
+    // Back cards - hidden behind
+    x = position < 0 ? -400 : 400
+    z = -400
+    rotateY = position < 0 ? 60 : -60
+    scale = 0.5
+    opacity = 0
+    zIndex = 0
+  }
 
   return { x, z, rotateY, scale, opacity, zIndex }
 }
@@ -139,8 +187,8 @@ export function Projects() {
 
         {/* 3D Carousel Container */}
         <div
-          className="relative h-[500px] flex items-center justify-center"
-          style={{ perspective: '1000px' }}
+          className="relative h-[520px] flex items-center justify-center"
+          style={{ perspective: '1200px' }}
         >
           <div
             className="relative w-full h-full flex items-center justify-center"
@@ -149,6 +197,9 @@ export function Projects() {
             {projects.map((project, index) => {
               const transform = cardTransforms[index]
               const isActive = index === activeIndex
+              const isVisible = transform.opacity > 0
+
+              if (!isVisible) return null
 
               return (
                 <motion.div
@@ -164,15 +215,15 @@ export function Projects() {
                   }}
                   transition={{
                     type: 'spring',
-                    stiffness: 100,
+                    stiffness: 120,
                     damping: 20,
-                    mass: 1
+                    mass: 0.8
                   }}
                   style={{
                     zIndex: transform.zIndex,
                     transformStyle: 'preserve-3d',
-                    width: '320px',
-                    height: '420px'
+                    width: '300px',
+                    height: '400px'
                   }}
                   onClick={() => {
                     if (!isActive) {
@@ -180,14 +231,14 @@ export function Projects() {
                       setActiveIndex(index)
                     }
                   }}
-                  whileHover={isActive ? { scale: transform.scale * 1.05 } : {}}
+                  whileHover={isActive ? { scale: 1.05 } : { scale: transform.scale * 1.02 }}
                 >
                   <div
-                    className={`w-full h-full rounded-3xl p-6 flex flex-col ${project.gradient}`}
+                    className={`w-full h-full rounded-3xl p-5 flex flex-col ${project.gradient}`}
                     style={{
                       boxShadow: isActive
-                        ? '0 30px 60px -15px rgba(0, 0, 0, 0.5), 0 0 30px rgba(139, 92, 246, 0.15)'
-                        : '0 20px 40px -15px rgba(0, 0, 0, 0.3)',
+                        ? '0 30px 60px -15px rgba(0, 0, 0, 0.5), 0 0 40px rgba(139, 92, 246, 0.2)'
+                        : '0 20px 40px -15px rgba(0, 0, 0, 0.4)',
                       backfaceVisibility: 'hidden'
                     }}
                   >
@@ -204,16 +255,16 @@ export function Projects() {
                     </div>
 
                     {/* Content */}
-                    <div className="mt-auto pt-6">
-                      <h3 className="text-xl font-display font-bold text-white mb-3 leading-tight">
+                    <div className="mt-auto pt-4">
+                      <h3 className="text-lg font-display font-bold text-white mb-2 leading-tight">
                         {project.title}
                       </h3>
-                      <p className="text-white/80 text-sm leading-relaxed mb-4 line-clamp-3">
+                      <p className="text-white/80 text-sm leading-relaxed mb-3 line-clamp-3">
                         {project.description}
                       </p>
 
                       {project.highlight && (
-                        <p className="text-white font-semibold text-sm mb-4 flex items-center gap-2">
+                        <p className="text-white font-semibold text-sm mb-3 flex items-center gap-2">
                           <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
                           {project.highlight}
                         </p>
@@ -224,7 +275,7 @@ export function Projects() {
                           href={project.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold hover:bg-white/30 transition-colors border border-white/20"
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold hover:bg-white/30 transition-colors border border-white/20"
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                           onClick={(e) => e.stopPropagation()}
