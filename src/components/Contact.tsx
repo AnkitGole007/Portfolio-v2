@@ -61,19 +61,16 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="py-24 px-4">
+    <section id="contact" className="py-12 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            Get In Touch
-          </span>
           <h2 className="font-display text-4xl md:text-5xl font-bold mb-4 gradient-text">
             Let's Connect
           </h2>

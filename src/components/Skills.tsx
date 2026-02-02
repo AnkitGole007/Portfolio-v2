@@ -46,11 +46,11 @@ const skillCategories = [
 
 export function Skills() {
   return (
-    <section id="skills" className="py-24 px-4 bg-secondary/30">
+    <section id="skills" className="py-12 px-4 bg-secondary/30">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

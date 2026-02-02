@@ -1,16 +1,13 @@
-import { motion } from 'framer-motion'
-import { Briefcase, Calendar, MapPin } from 'lucide-react'
+import { useState, useEffect, useRef } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 interface ExperienceItem {
   id: number
   title: string
   company: string
-  companyUrl?: string
-  location: string
-  startDate: string
-  endDate: string
+  period: string
   highlights: string[]
-  color: 'blue' | 'purple' | 'green' | 'orange' | 'pink'
 }
 
 const experiences: ExperienceItem[] = [
@@ -18,121 +15,79 @@ const experiences: ExperienceItem[] = [
     id: 1,
     title: 'AI Researcher',
     company: 'Worcester Polytechnic Institute',
-    location: 'Worcester, MA',
-    startDate: 'Aug 2025',
-    endDate: 'Present',
-    color: 'blue',
+    period: 'Aug 2025 - Present',
     highlights: [
-      'Achieved 87.4% matching accuracy at 93% lower review cost by building a 4-tier cascading matcher using lexical rules, SBERT + Logistic Regression, Llama 3.1 8B chain-of-thought prompting',
-      'Improved F1-per-cost by 11.9x by routing 65% high-confidence pairs to low-cost matching with Platt scaling and temperature scaling for confidence calibration',
-      'Improved upstream data quality by 20% by enforcing schema checks, null scans, normalization UDFs, and blocking rules',
-      'Reduced deployment time 6x by delivering a Gradio dashboard with real-time budget tracking and audit-ready JSON export'
+      'Built 4-tier cascading matcher achieving 87.4% accuracy at 93% lower cost',
+      'Delivered Gradio dashboard reducing deployment time by 6x'
     ]
   },
   {
     id: 2,
     title: 'Applied LLM Researcher',
     company: 'PayPal',
-    companyUrl: 'https://paypal.com',
-    location: 'Worcester, MA',
-    startDate: 'Aug 2025',
-    endDate: 'Dec 2025',
-    color: 'purple',
+    period: 'Aug 2025 - Dec 2025',
     highlights: [
-      'Improved decision quality with 0.85 F1, 0.835 MCC, 0.743 KS by fine-tuning Phi-4-mini using LoRA adapters and CALM-style tabular-to-text prompts',
-      'Delivered 20x training-data efficiency by matching ML benchmark performance using 1/5 training slices',
-      'Validated semantic robustness with feature-order A/B tests, holding accuracy near 0.947 and F1 near 0.85 under shuffled attributes',
-      'Implemented AES-GCM encrypted transfer workflow with restricted directories and one-time token handling'
+      'Fine-tuned Phi-4-mini achieving 0.85 F1, 0.835 MCC, 0.743 KS',
+      'Delivered 20x training-data efficiency matching ML benchmark performance'
     ]
   },
   {
     id: 3,
-    title: 'AI Intern (AI Agent Builder)',
+    title: 'AI Intern (Agent Builder)',
     company: 'NeuralSeek',
-    companyUrl: 'https://neuralseek.com',
-    location: 'Remote',
-    startDate: 'Aug 2025',
-    endDate: 'Sep 2025',
-    color: 'green',
+    period: 'Aug 2025 - Sep 2025',
     highlights: [
-      'Built scalable natural language AI agents using NeuralSeek\'s no-code generative AI platform',
-      'Completed advanced certifications in AI agent architectures',
-      'Designed and deployed original AI agents for enterprise applications',
-      'Conducted competitive analyses of AI platforms and collaborated with team to solve real-world problems'
+      'Built scalable AI agents using no-code generative AI platform',
+      'Completed advanced certifications in AI agent architectures'
     ]
   },
   {
     id: 4,
-    title: 'Graduate Assistant - FIN 530 Cryptocurrencies',
+    title: 'Graduate Assistant - Cryptocurrencies',
     company: 'Worcester Polytechnic Institute',
-    location: 'Worcester, MA',
-    startDate: 'Apr 2025',
-    endDate: 'Dec 2025',
-    color: 'orange',
+    period: 'Apr 2025 - Dec 2025',
     highlights: [
-      'Assisted with labs on regulated stablecoins and CBDCs using Hyperledger Fabric, Docker, Python, and GitHub',
-      'Mentored student teams on token architectures and compliance processes',
-      'Graded quizzes, midterms, and project reports on stablecoins, tokenization, and quantum-safe payments',
-      'Supported teams with smart contract logic, system design, documentation, and presentation skills'
+      'Assisted labs on CBDCs using Hyperledger Fabric & Docker',
+      'Mentored teams on token architectures and compliance'
     ]
   },
   {
     id: 5,
-    title: 'Graduate Assistant - FIN 540 Financial Analytics',
+    title: 'Graduate Assistant - Financial Analytics',
     company: 'Worcester Polytechnic Institute',
-    location: 'Worcester, MA',
-    startDate: 'Jan 2025',
-    endDate: 'Mar 2025',
-    color: 'pink',
+    period: 'Jan 2025 - Mar 2025',
     highlights: [
-      'Reviewed homework and projects on portfolio theory, risk and return, forecasting using Python and Excel',
-      'Debugged student code and spreadsheets, demonstrating how changes affect risk metrics and investment decisions',
-      'Contributed to refining grading rubrics and feedback templates by analyzing frequent errors'
+      'Reviewed projects on portfolio theory and risk forecasting',
+      'Debugged code demonstrating risk metrics impact'
     ]
   },
   {
     id: 6,
     title: 'System Engineer',
     company: 'Atos IT Solutions',
-    companyUrl: 'https://atos.net',
-    location: 'Pune, India',
-    startDate: 'Aug 2023',
-    endDate: 'Jul 2024',
-    color: 'blue',
+    period: 'Aug 2023 - Jul 2024',
     highlights: [
-      'Managed enterprise IT infrastructure and digital workplace solutions',
-      'Implemented automation workflows to streamline IT operations',
-      'Collaborated with cross-functional teams on system integration projects',
-      'Provided technical support and troubleshooting for complex system issues'
+      'Managed enterprise IT infrastructure and digital workplace',
+      'Implemented automation workflows for IT operations'
     ]
   },
   {
     id: 7,
     title: 'Associate Engineer',
     company: 'Atos IT Solutions',
-    companyUrl: 'https://atos.net',
-    location: 'Pune, India',
-    startDate: 'Nov 2022',
-    endDate: 'Aug 2023',
-    color: 'purple',
+    period: 'Nov 2022 - Aug 2023',
     highlights: [
-      'Developed and maintained IT solutions for enterprise clients',
-      'Participated in digital workplace transformation initiatives',
-      'Assisted in deploying and configuring enterprise software systems'
+      'Developed IT solutions for enterprise clients',
+      'Participated in digital workplace transformation'
     ]
   },
   {
     id: 8,
     title: 'Digital Workplace Trainee',
     company: 'Atos IT Solutions',
-    companyUrl: 'https://atos.net',
-    location: 'Pune, India',
-    startDate: 'Jul 2022',
-    endDate: 'Dec 2022',
-    color: 'green',
+    period: 'Jul 2022 - Dec 2022',
     highlights: [
-      'Completed comprehensive training in digital workplace technologies',
-      'Gained hands-on experience with enterprise IT systems and processes',
+      'Completed training in digital workplace technologies',
       'Collaborated with senior engineers on client projects'
     ]
   },
@@ -140,147 +95,184 @@ const experiences: ExperienceItem[] = [
     id: 9,
     title: 'Web Developer Intern',
     company: 'Larsen & Toubro Defence',
-    companyUrl: 'https://www.larsentoubro.com',
-    location: 'Pune, India',
-    startDate: 'Aug 2020',
-    endDate: 'Nov 2020',
-    color: 'orange',
+    period: 'Aug 2020 - Nov 2020',
     highlights: [
-      'Worked as a web development intern to add elements to the company portal',
-      'Made updates in Company Portal and optimized element functionality',
-      'Worked on Defence Newsletter website as UI/UX developer'
+      'Developed and optimized company portal elements',
+      'Built Defence Newsletter website as UI/UX developer'
     ]
   }
 ]
 
-const colorStyles = {
-  blue: {
-    border: 'border-l-blue-500',
-    text: 'text-blue-400',
-    bg: 'bg-blue-500/10',
-    dot: 'bg-blue-500'
-  },
-  purple: {
-    border: 'border-l-purple-500',
-    text: 'text-purple-400',
-    bg: 'bg-purple-500/10',
-    dot: 'bg-purple-500'
-  },
-  green: {
-    border: 'border-l-emerald-500',
-    text: 'text-emerald-400',
-    bg: 'bg-emerald-500/10',
-    dot: 'bg-emerald-500'
-  },
-  orange: {
-    border: 'border-l-orange-500',
-    text: 'text-orange-400',
-    bg: 'bg-orange-500/10',
-    dot: 'bg-orange-500'
-  },
-  pink: {
-    border: 'border-l-pink-500',
-    text: 'text-pink-400',
-    bg: 'bg-pink-500/10',
-    dot: 'bg-pink-500'
-  }
-}
-
 export function Experience() {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  // Auto-scroll
+  useEffect(() => {
+    if (!isAutoPlaying) return
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % experiences.length)
+    }, 4000)
+
+    return () => clearInterval(interval)
+  }, [isAutoPlaying])
+
+  const handlePrev = () => {
+    setIsAutoPlaying(false)
+    setCurrentIndex((prev) => (prev - 1 + experiences.length) % experiences.length)
+  }
+
+  const handleNext = () => {
+    setIsAutoPlaying(false)
+    setCurrentIndex((prev) => (prev + 1) % experiences.length)
+  }
+
+  // Get visible cards (current + next 2)
+  const getVisibleCards = () => {
+    const cards = []
+    for (let i = 0; i < 3; i++) {
+      const index = (currentIndex + i) % experiences.length
+      cards.push({ ...experiences[index], position: i })
+    }
+    return cards
+  }
+
   return (
-    <section id="experience" className="py-24 px-4 bg-secondary/20">
-      <div className="max-w-4xl mx-auto">
-        {/* Section Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4 text-foreground">
-            Experience
-          </h2>
-          <p className="text-muted-foreground">
-            What I've done
-          </p>
-        </motion.div>
+    <section id="experience" className="py-12 px-4 bg-secondary/20 overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-[300px_1fr] gap-8 items-center">
+          {/* Left Side - Title */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative"
+          >
+            {/* Large Quote Mark */}
+            <div className="text-[120px] leading-none text-primary/20 font-serif absolute -top-8 -left-4">
+              "
+            </div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-border hidden md:block" />
+            <div className="relative z-10 pl-4">
+              <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-2">
+                Experience
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                What I've Done
+              </p>
+            </div>
 
-          {/* Experience Cards */}
-          <div className="space-y-6">
-            {experiences.map((exp, index) => (
-              <motion.div
-                key={exp.id}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
+            {/* Navigation Arrows */}
+            <div className="flex items-center gap-3 mt-8 pl-4">
+              <motion.button
+                onClick={handlePrev}
+                className="p-3 rounded-full bg-card border border-border hover:bg-primary/10 hover:border-primary transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                aria-label="Previous experience"
               >
-                <ExperienceCard experience={exp} />
-              </motion.div>
-            ))}
+                <ChevronLeft className="w-5 h-5 text-foreground" />
+              </motion.button>
+              <motion.button
+                onClick={handleNext}
+                className="p-3 rounded-full bg-card border border-border hover:bg-primary/10 hover:border-primary transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                aria-label="Next experience"
+              >
+                <ChevronRight className="w-5 h-5 text-foreground" />
+              </motion.button>
+            </div>
+          </motion.div>
+
+          {/* Right Side - Sliding Cards */}
+          <div
+            ref={containerRef}
+            className="relative h-[280px] overflow-hidden"
+          >
+            <div className="absolute inset-0 flex items-center">
+              <AnimatePresence mode="popLayout">
+                {getVisibleCards().map((exp, idx) => (
+                  <motion.div
+                    key={`${exp.id}-${currentIndex}`}
+                    className="absolute"
+                    initial={{ x: '100%', opacity: 0 }}
+                    animate={{
+                      x: `${idx * 340}px`,
+                      opacity: idx === 0 ? 1 : idx === 1 ? 0.8 : 0.5,
+                      scale: idx === 0 ? 1 : idx === 1 ? 0.95 : 0.9
+                    }}
+                    exit={{ x: '-100%', opacity: 0 }}
+                    transition={{
+                      type: 'spring',
+                      stiffness: 100,
+                      damping: 20
+                    }}
+                    style={{ width: '320px' }}
+                  >
+                    <ExperienceCard experience={exp} isActive={idx === 0} />
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </div>
+
+            {/* Fade gradient on right */}
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
           </div>
+        </div>
+
+        {/* Progress Dots */}
+        <div className="flex items-center justify-center gap-2 mt-8">
+          {experiences.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                setIsAutoPlaying(false)
+                setCurrentIndex(index)
+              }}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                index === currentIndex
+                  ? 'w-6 bg-primary'
+                  : 'w-1.5 bg-muted-foreground/30 hover:bg-muted-foreground/50'
+              }`}
+              aria-label={`Go to experience ${index + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>
   )
 }
 
-function ExperienceCard({ experience }: { experience: ExperienceItem }) {
-  const styles = colorStyles[experience.color]
-
+function ExperienceCard({ experience, isActive }: { experience: ExperienceItem; isActive: boolean }) {
   return (
     <div
-      className={`relative bg-card/50 backdrop-blur-sm rounded-xl border border-border ${styles.border} border-l-4 p-6 hover:bg-card/70 transition-colors`}
+      className={`bg-card/80 backdrop-blur-sm rounded-2xl p-6 border transition-all h-[240px] flex flex-col ${
+        isActive ? 'border-primary/50 shadow-lg shadow-primary/10' : 'border-border'
+      }`}
     >
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-4">
-        <div className="flex-1">
-          <div className="flex items-center gap-2 mb-1">
-            <Briefcase className={`w-4 h-4 ${styles.text}`} />
-            <h3 className="font-display font-semibold text-lg text-foreground">
-              {experience.title}
-            </h3>
-          </div>
-          {experience.companyUrl ? (
-            <a
-              href={experience.companyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${styles.text} hover:underline text-sm font-medium`}
-            >
-              {experience.company}
-            </a>
-          ) : (
-            <span className={`${styles.text} text-sm font-medium`}>
-              {experience.company}
-            </span>
-          )}
-        </div>
-
-        <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-          <div className="flex items-center gap-1.5">
-            <Calendar className="w-4 h-4" />
-            <span>{experience.startDate} — {experience.endDate}</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <MapPin className="w-4 h-4" />
-            <span>{experience.location}</span>
-          </div>
-        </div>
+      <div className="mb-4">
+        <h3 className="font-display font-semibold text-lg text-foreground leading-tight mb-1">
+          {experience.title}
+        </h3>
+        <p className="text-primary text-sm font-medium">
+          {experience.company}
+        </p>
+        <p className="text-xs text-muted-foreground mt-1">
+          {experience.period}
+        </p>
       </div>
 
       {/* Highlights */}
-      <ul className="space-y-2">
+      <ul className="space-y-2 flex-1">
         {experience.highlights.map((highlight, idx) => (
-          <li key={idx} className="flex items-start gap-3 text-sm text-muted-foreground">
-            <span className={`w-1.5 h-1.5 rounded-full ${styles.dot} mt-2 flex-shrink-0`} />
-            <span>{highlight}</span>
+          <li key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
+            <span className="line-clamp-2">{highlight}</span>
           </li>
         ))}
       </ul>

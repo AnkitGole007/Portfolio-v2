@@ -164,11 +164,11 @@ export function Projects() {
   }, [activeIndex, totalItems])
 
   return (
-    <section id="projects" className="py-32 px-4 overflow-hidden">
+    <section id="projects" className="py-12 px-4 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-20"
+          className="text-center mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
