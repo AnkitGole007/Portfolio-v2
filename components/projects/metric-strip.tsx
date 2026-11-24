@@ -1,0 +1,76 @@
+import type { Metric } from '@/lib/content'
+import { cn } from '@/lib/utils'
+import { keepTogether } from '@/lib/keep-together'
+
+// Column spans on a 12-column grid, chosen so every row fills and no two rows match.
+const SPANS: Record<number, number[]> = {
+  1: [12],
+  2: [7, 5],
+  3: [5, 4, 3],
+  4: [7, 5, 4, 8],
+  5: [7, 5, 4, 4, 4],
+  6: [5, 4, 3, 3, 4, 5],
+}
+const SPAN_CLASS: Record<number, string> = {
+  3: 'md:col-span-3',
+  4: 'md:col-span-4',
+  5: 'md:col-span-5',
+  7: 'md:col-span-7',
+  8: 'md:col-span-8',
+  12: 'md:col-span-12',
+}
+
+function spans(n: number): number[] {
+  if (n <= 6) return SPANS[n] ?? []
+  const out = [...SPANS[6]]
+  let rest = n - 6
+  while (rest > 0) {
+    if (rest === 1) {
+      out.push(12)
+      rest = 0
+    } else if (rest === 2) {
+      out.push(7, 5)
+      rest = 0
+    } else {
+      out.push(4, 4, 4)
+      rest -= 3
+    }
+  }
+  return out
+}
+
+/**
+ * Asymmetric ledger of metric values. Square cells on the raised tone with 8 px of ground between
+ * them, nothing drawn: the first cell is tinted with the accent, the rest sit one tone step down.
+ */
+export function MetricStrip({ metrics, className }: { metrics: Metric[]; className?: string }) {
+  const n = metrics.length
+  if (n === 0) return null
+  const s = spans(n)
+  return (
+    <dl className={cn('grid grid-cols-2 gap-2 md:grid-cols-12', className)}>
+      {metrics.map((m, i) => {
+        const hero = i === 0
+        // On phones the hero spans the row; when the remainder is odd the last cell does too.
+        const fullOnMobile = hero || (n % 2 === 0 && i === n - 1)
+        return (
+          <div
+            key={`${m.label}-${i}`}
+            className={cn(
+              'flex flex-col justify-between gap-6 p-5 md:p-6',
+              fullOnMobile ? 'col-span-2' : 'col-span-1',
+              SPAN_CLASS[s[i]] ?? 'md:col-span-4',
+              hero ? 'bg-accent-soft' : 'bg-surface-raised',
+            )}
+          >
+            {/* ink-2 on the accent tint measures 4.29:1, so the tinted lead cell labels in ink. */}
+            <dt className={cn('order-2 text-sm', hero ? 'text-ink' : 'text-ink-2')}>{keepTogether(m.label)}</dt>
+            <dd className={cn('order-1 text-metric text-balance text-ink', hero ? 'text-3xl md:text-5xl' : 'text-2xl md:text-3xl')}>
+              {keepTogether(m.value)}
+            </dd>
+          </div>
+        )
+      })}
+    </dl>
+  )
+}

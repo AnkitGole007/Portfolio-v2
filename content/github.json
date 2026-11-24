@@ -1,0 +1,141 @@
+{
+  "fetchedAt": "2026-11-24T02:13:43.555Z",
+  "user": {
+    "publicRepos": 23,
+    "followers": 8
+  },
+  "repos": {
+    "AnkitGole007/b2-platform-agents": {
+      "stars": 0,
+      "pushedAt": "2026-11-17T04:52:29Z",
+      "language": null,
+      "description": "Privacy-first AI agents that run 24/7 to automate tedious nonprofit administrative tasks."
+    },
+    "AnkitGole007/b2-platform": {
+      "stars": 0,
+      "pushedAt": "2026-09-27T04:26:07Z",
+      "language": "Python",
+      "description": null
+    },
+    "AnkitGole007/researchagent": {
+      "stars": 0,
+      "pushedAt": "2026-08-18T23:12:04Z",
+      "language": "Python",
+      "description": null
+    },
+    "AnkitGole007/Fairness-In-Entity-Matching": {
+      "stars": 0,
+      "pushedAt": "2026-04-15T23:22:21Z",
+      "language": null,
+      "description": null
+    },
+    "AnkitGole007/Autonomous-SRE-Swarm": {
+      "stars": 0,
+      "pushedAt": "2026-02-24T20:39:55Z",
+      "language": null,
+      "description": null
+    },
+    "AnkitGole007/Portfolio-v2": {
+      "stars": 0,
+      "pushedAt": "2026-02-02T17:58:39Z",
+      "language": "TypeScript",
+      "description": null
+    },
+    "AnkitGole007/Portfolio": {
+      "stars": 0,
+      "pushedAt": "2026-02-01T04:16:25Z",
+      "language": "TypeScript",
+      "description": null
+    },
+    "AnkitGole007/Complete-Data-Science-With-Machine-Learning-And-NLP-2024": {
+      "stars": 0,
+      "pushedAt": "2025-05-26T17:15:31Z",
+      "language": null,
+      "description": null
+    },
+    "AnkitGole007/CS534-IntroAI": {
+      "stars": 0,
+      "pushedAt": "2025-05-26T16:12:06Z",
+      "language": null,
+      "description": null
+    },
+    "AnkitGole007/Fake-Review-Bounty-Hunter": {
+      "stars": 0,
+      "pushedAt": "2025-05-14T18:07:52Z",
+      "language": null,
+      "description": null
+    },
+    "AnkitGole007/Drag-A-GAN": {
+      "stars": 0,
+      "pushedAt": "2025-05-07T03:06:04Z",
+      "language": null,
+      "description": null
+    },
+    "AnkitGole007/CS552_GenerativeAI": {
+      "stars": 0,
+      "pushedAt": "2025-03-21T01:09:28Z",
+      "language": "Python",
+      "description": null
+    },
+    "AnkitGole007/DS504-BigDataAnalytics": {
+      "stars": 0,
+      "pushedAt": "2025-03-18T18:55:03Z",
+      "language": null,
+      "description": null
+    },
+    "AnkitGole007/CS554-NLP": {
+      "stars": 0,
+      "pushedAt": "2025-02-26T07:46:48Z",
+      "language": null,
+      "description": null
+    },
+    "AnkitGole007/AnkitGole007": {
+      "stars": 1,
+      "pushedAt": "2025-02-22T01:34:19Z",
+      "language": null,
+      "description": null
+    },
+    "AnkitGole007/Job-Posting-Project": {
+      "stars": 0,
+      "pushedAt": "2025-01-05T18:58:03Z",
+      "language": null,
+      "description": null
+    },
+    "AnkitGole007/TumorLytix": {
+      "stars": 0,
+      "pushedAt": "2024-12-13T05:00:18Z",
+      "language": null,
+      "description": null
+    },
+    "AnkitGole007/Diffusion-Models-for-Tumor-Segmentation": {
+      "stars": 0,
+      "pushedAt": "2024-12-13T04:10:02Z",
+      "language": null,
+      "description": null
+    },
+    "AnkitGole007/InformationRetrieval": {
+      "stars": 0,
+      "pushedAt": "2024-11-19T02:58:03Z",
+      "language": "Python",
+      "description": null
+    },
+    "AnkitGole007/MachineLearning": {
+      "stars": 0,
+      "pushedAt": "2024-11-12T05:09:54Z",
+      "language": "Jupyter Notebook",
+      "description": null
+    },
+    "AnkitGole007/CS541-DeepLearning": {
+      "stars": 0,
+      "pushedAt": "2024-10-29T20:13:29Z",
+      "language": null,
+      "description": null
+    },
+    "AnkitGole007/Deep-Learning": {
+      "stars": 0,
+      "pushedAt": "2024-09-04T01:41:56Z",
+      "language": "Python",
+      "description": null
+    }
+  }
+}

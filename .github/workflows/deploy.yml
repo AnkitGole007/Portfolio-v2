@@ -1,5 +1,12 @@
 name: Deploy to GitHub Pages
 
+# The site now lives on Vercel at its own domain (docs/deploy.md). This workflow replaces the old
+# GitHub Pages site with a one-page redirect stub: redirect/index.html, published as index.html and
+# 404.html, so the old address and every old deep link land on the new domain's root.
+#
+# The job runs only when the repository variable SITE_URL is set (Settings, Secrets and variables,
+# Actions, Variables). While SITE_URL is unset the job is skipped, and the old Pages site keeps
+# serving its last deployment. That is intended until the new domain is live.
 on:
   push:
     branches: ['main']
@@ -12,42 +19,53 @@ permissions:
 
 concurrency:
   group: 'pages'
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
-  build:
+  redirect:
+    if: ${{ vars.SITE_URL != '' }}
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build
-        run: npm run build
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './dist'
-
-  deploy:
+    timeout-minutes: 10
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
     steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          sparse-checkout: redirect
+
+      - name: Render the redirect stub
+        shell: bash
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: |
+          # Only https:// and a hostname, with an optional trailing slash. No port, path, query or
+          # other characters, so the value is safe as a sed replacement and as an HTML attribute.
+          re='^https://[A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?)+/?$'
+          if [[ ! "$SITE_URL" =~ $re ]]; then
+            echo "::error::SITE_URL must be https:// followed by a hostname only, for example https://example.dev (no port, path or spaces). Got: '$SITE_URL'"
+            exit 1
+          fi
+          SITE_URL="${SITE_URL%/}"
+          mkdir -p _site
+          sed "s|__SITE_URL__|$SITE_URL|g" redirect/index.html > _site/index.html
+          if grep -q '__SITE_URL__' _site/index.html; then
+            echo "::error::The placeholder __SITE_URL__ is still in the rendered page."
+            exit 1
+          fi
+          cp _site/index.html _site/404.html
+          echo "Redirect stub points to $SITE_URL"
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v6
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

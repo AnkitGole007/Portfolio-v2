@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>check-links fixture</title></head>
+<body>
+  <!-- Fixture for scripts/check-links.mjs --self-test: one of each planted fault, and clean controls that must pass. -->
+  <main id="main">
+    <h1 id="top">Fixture</h1>
+    <p><a href="/second">A page that exists</a></p>
+    <p><a href="/second#here">A fragment that exists</a></p>
+    <p><a href="/missing-page">Planted 404 link</a></p>
+    <p><a href="/second#nowhere">Planted missing fragment</a></p>
+    <p><a href="">Planted empty href</a></p>
+    <button type="button"><svg aria-hidden="true" viewBox="0 0 4 4"><circle cx="2" cy="2" r="2"></circle></svg></button>
+    <a href="/second" aria-label="Named icon link"><svg aria-hidden="true" viewBox="0 0 4 4"><circle cx="2" cy="2" r="2"></circle></svg></a>
+    <button type="button"><svg aria-hidden="true" viewBox="0 0 4 4"></svg><span class="sr-only">Search</span></button>
+    <img src="/good.png" alt="One pixel" width="1" height="1">
+    <img src="/good.png" alt="Planted zero-size image" width="0" height="0">
+    <img src="/missing.png" alt="Planted missing image file" width="10" height="10">
+  </main>
+</body>
+</html>

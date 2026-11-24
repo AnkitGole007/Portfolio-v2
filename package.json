@@ -1,37 +1,35 @@
 {
-  "name": "ai-portfolio-v2",
+  "name": "ankitgole-portfolio",
+  "version": "2.0.0",
   "private": true,
-  "version": "1.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "dev": "next dev",
+    "prebuild": "node scripts/sync-github.mjs && node scripts/check-profile.mjs && node scripts/build-markdown.mjs",
+    "build": "next build",
+    "postbuild": "node scripts/scan-build.mjs && node scripts/check-identity.mjs --build",
+    "start": "next start",
+    "check": "node scripts/check-profile.mjs && node scripts/check-profile.mjs scripts/fixtures/profile-banned.json --expect-fail \"0.85 F1\" && node scripts/check-links.mjs --self-test && node scripts/scan-build.mjs --self-test",
+    "check:links": "node scripts/check-links.mjs",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "class-variance-authority": "^0.7.1",
+    "@phosphor-icons/react": "^2.1.10",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "clsx": "^2.1.1",
-    "framer-motion": "^12.29.2",
-    "lucide-react": "^0.563.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "tailwind-merge": "^3.4.0"
+    "motion": "^12.43.0",
+    "next": "^16.4.6",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-use-measure": "^2.1.7",
+    "tailwind-merge": "^3.7.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.1",
-    "@tailwindcss/vite": "^4.1.18",
-    "@types/node": "^24.10.9",
-    "@types/react": "^19.2.5",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^5.1.1",
-    "eslint": "^9.39.1",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.4.24",
-    "globals": "^16.5.0",
-    "tailwindcss": "^4.1.18",
-    "typescript": "~5.9.3",
-    "typescript-eslint": "^8.46.4",
-    "vite": "^7.2.4"
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.6.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3"
   }
 }

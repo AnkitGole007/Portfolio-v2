@@ -1,0 +1,4 @@
+[
+  { "id": "section-top", "group": "Sections", "title": "Top", "keywords": "top", "href": "/#top" },
+  { "id": "section-gone", "group": "Sections", "title": "Gone", "keywords": "gone", "href": "/gone" }
+]

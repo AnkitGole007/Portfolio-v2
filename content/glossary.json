@@ -1,0 +1,188 @@
+[
+  {
+    "term": "RAG",
+    "match": ["RAG"],
+    "tip": "Retrieval-augmented generation: a language model first looks up relevant documents, then writes its answer using what it found.",
+    "source": "https://arxiv.org/abs/2005.11401"
+  },
+  {
+    "term": "hybrid search",
+    "match": ["hybrid search"],
+    "tip": "A search that combines keyword matching with meaning-based vector search, so results can match either the exact words or the idea.",
+    "source": "https://docs.lancedb.com/search/hybrid-search"
+  },
+  {
+    "term": "Reciprocal Rank Fusion",
+    "match": ["Reciprocal Rank Fusion"],
+    "tip": "A simple way to merge several ranked result lists into one, giving each item more credit the higher it ranks in each list.",
+    "source": "https://cormack.uwaterloo.ca/cormacksigir09-rrf.pdf"
+  },
+  {
+    "term": "SPECTER2",
+    "match": ["SPECTER2"],
+    "tip": "An open model from the Allen Institute for AI that turns scientific papers into numeric vectors so similar papers can be found.",
+    "source": "https://huggingface.co/allenai/specter2"
+  },
+  {
+    "term": "cross-encoder",
+    "match": ["cross-encoder", "cross-encoders"],
+    "tip": "A model that reads a query and a document together and scores how relevant they are, more accurate but slower than comparing precomputed vectors.",
+    "source": "https://sbert.net/examples/cross_encoder/applications/README.html"
+  },
+  {
+    "term": "reranking",
+    "match": ["reranking", "reranker", "reranks", "rerank"],
+    "tip": "A second pass over search results that reorders a shortlist with a slower, more careful model so the best matches come first.",
+    "source": "https://www.sbert.net/examples/sentence_transformer/applications/retrieve_rerank/README.html"
+  },
+  {
+    "term": "LanceDB",
+    "match": ["LanceDB"],
+    "tip": "An open-source database that stores data alongside vector embeddings and supports both keyword and similarity search over them.",
+    "source": "https://docs.lancedb.com/"
+  },
+  {
+    "term": "Server-Sent Events",
+    "match": ["Server-Sent Events"],
+    "tip": "A web standard that lets a server push updates to a browser over one open connection, so results appear as they are ready.",
+    "source": "https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events"
+  },
+  {
+    "term": "LoRA",
+    "match": ["LoRA"],
+    "tip": "Low-rank adaptation: a way to fine-tune a large model by training a small set of added weights instead of changing all of them.",
+    "source": "https://arxiv.org/abs/2106.09685"
+  },
+  {
+    "term": "PEFT",
+    "match": ["PEFT"],
+    "tip": "Parameter-efficient fine-tuning: methods that adapt a large pretrained model by training only a small fraction of its parameters.",
+    "source": "https://huggingface.co/docs/peft/index"
+  },
+  {
+    "term": "quantization",
+    "match": ["4-bit quantization", "4-bit quantized", "quantized", "4-bit"],
+    "tip": "Storing a model's numbers at lower precision, such as 4 bits instead of 16, so it uses less memory and runs on modest hardware.",
+    "source": "https://huggingface.co/docs/transformers/main/en/quantization/overview"
+  },
+  {
+    "term": "isotonic regression",
+    "match": ["isotonic regression", "isotonic calibration"],
+    "tip": "A method that fits a curve that never goes down, often used to turn raw model scores into probabilities that match real outcomes.",
+    "source": "https://en.wikipedia.org/wiki/Isotonic_regression"
+  },
+  {
+    "term": "entity matching",
+    "match": ["entity matching", "entity matcher"],
+    "tip": "Deciding whether two records, such as two product listings or two customer entries, describe the same real-world thing.",
+    "source": "https://en.wikipedia.org/wiki/Record_linkage"
+  },
+  {
+    "term": "LLM-as-judge",
+    "match": ["LLM-as-judge"],
+    "tip": "Using a large language model to grade or rank answers or search results, as a faster and cheaper stand-in for human reviewers.",
+    "source": "https://arxiv.org/abs/2306.05685"
+  },
+  {
+    "term": "NDCG",
+    "match": ["NDCG"],
+    "tip": "Normalized discounted cumulative gain: a ranking score from 0 to 1 that rewards putting the most relevant results near the top.",
+    "source": "https://en.wikipedia.org/wiki/Discounted_cumulative_gain"
+  },
+  {
+    "term": "Kendall's tau",
+    "match": ["Kendall's tau"],
+    "tip": "A statistic from minus 1 to 1 that measures how closely two rankings agree, counting pairs of items placed in the same order.",
+    "source": "https://en.wikipedia.org/wiki/Kendall_rank_correlation_coefficient"
+  },
+  {
+    "term": "MCC",
+    "match": ["MCC"],
+    "tip": "Matthews correlation coefficient: a score from minus 1 to 1 for yes or no predictions that stays reliable when one outcome is rare.",
+    "source": "https://en.wikipedia.org/wiki/Phi_coefficient"
+  },
+  {
+    "term": "KS statistic",
+    "match": ["KS"],
+    "tip": "The Kolmogorov-Smirnov statistic, used in credit scoring to measure how well a model's scores separate good accounts from bad ones.",
+    "source": "https://en.wikipedia.org/wiki/Kolmogorov-Smirnov_test"
+  },
+  {
+    "term": "XGBoost",
+    "match": ["XGBoost"],
+    "tip": "An open-source library for gradient-boosted decision trees, widely used as a strong baseline for predictions from tables of data.",
+    "source": "https://xgboost.readthedocs.io/en/stable/"
+  },
+  {
+    "term": "Slurm",
+    "match": ["Slurm"],
+    "tip": "Open-source software that schedules jobs on shared computing clusters, queuing each job until the GPUs or CPUs it asks for are free.",
+    "source": "https://slurm.schedmd.com/overview.html"
+  },
+  {
+    "term": "AES-GCM",
+    "match": ["AES-GCM"],
+    "tip": "A standard encryption method, approved by NIST, that keeps data secret and also detects whether anyone has tampered with it.",
+    "source": "https://csrc.nist.gov/pubs/sp/800/38/d/final"
+  },
+  {
+    "term": "Google Cloud Run",
+    "match": ["Google Cloud Run", "Cloud Run"],
+    "tip": "A Google Cloud service that runs an app packaged as a container and scales it with traffic, with no servers to manage.",
+    "source": "https://cloud.google.com/run/docs/overview/what-is-cloud-run"
+  },
+  {
+    "term": "Docker bind mount",
+    "match": ["Docker bind-mount", "bind-mount"],
+    "tip": "A Docker setting that links a folder on the host computer into a container, so both see and change the same files.",
+    "source": "https://docs.docker.com/engine/storage/bind-mounts/"
+  },
+  {
+    "term": "Ditto",
+    "match": ["Ditto"],
+    "tip": "An entity matching method from 2020 research that fine-tunes a pretrained language model such as BERT to decide whether two records match.",
+    "source": "https://arxiv.org/abs/2004.00584"
+  },
+  {
+    "term": "fairness loss",
+    "match": ["fairness loss"],
+    "tip": "An extra penalty added during training that pushes a model to perform about equally well across different groups of data.",
+    "source": "https://en.wikipedia.org/wiki/Fairness_(machine_learning)"
+  },
+  {
+    "term": "diffusion U-Net",
+    "match": ["diffusion U-Net", "U-Net"],
+    "tip": "An image model that learns to turn noise into a clean picture step by step, built on a U-shaped network that keeps fine detail.",
+    "source": "https://arxiv.org/abs/2006.11239"
+  },
+  {
+    "term": "CycleGAN",
+    "match": ["CycleGAN"],
+    "tip": "A model that learns to translate images from one style or domain to another without needing matched before and after pairs.",
+    "source": "https://arxiv.org/abs/1703.10593"
+  },
+  {
+    "term": "Dice score",
+    "match": ["Dice"],
+    "tip": "A score from 0 to 1 for how much a predicted region, such as a tumor outline, overlaps the true one.",
+    "source": "https://en.wikipedia.org/wiki/Dice-S%C3%B8rensen_coefficient"
+  },
+  {
+    "term": "Wave Function Collapse",
+    "match": ["Wave Function Collapse"],
+    "tip": "An algorithm that generates maps or patterns by filling a grid one tile at a time so each tile fits its neighbors.",
+    "source": "https://github.com/mxgmn/WaveFunctionCollapse"
+  },
+  {
+    "term": "TF-IDF",
+    "match": ["TF-IDF"],
+    "tip": "A way to score how important a word is to one document, higher when it is common there but rare across the others.",
+    "source": "https://en.wikipedia.org/wiki/TF-IDF"
+  },
+  {
+    "term": "LDA",
+    "match": ["LDA"],
+    "tip": "Latent Dirichlet allocation: a statistical model that discovers topics in a set of documents by finding words that tend to appear together.",
+    "source": "https://www.jmlr.org/papers/v3/blei03a.html"
+  }
+]
