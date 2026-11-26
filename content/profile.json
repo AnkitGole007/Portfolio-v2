@@ -1,0 +1,1440 @@
+{
+  "meta": {
+    "version": "2026.11.23",
+    "lastUpdated": "2026-11-23",
+    "sources": [
+      "Ankit Gole's verified career record, version 2026-11-22: verified tables and approved bullets only"
+    ]
+  },
+  "identity": {
+    "name": "Ankit Gole",
+    "fullName": "Ankit Gole",
+    "title": "AI/ML Engineer",
+    "headline": "AI/ML engineer building LLM applications that ease real workflows, with retrieval, evaluation and fine-tuning behind them",
+    "tagline": "I would rather take one LLM application all the way to deployable, with observability and guardrails, than build many prototypes that never ship.",
+    "tools": [
+      "Python",
+      "PyTorch",
+      "LanceDB",
+      "FastAPI",
+      "Docker",
+      "Google Cloud Run",
+      "Azure AI Foundry"
+    ],
+    "result": "Traced a 24+ minute search crash to five bugs and brought it to 47.7 seconds with zero errors.",
+    "proof": [
+      "MS in AI, WPI, 2026",
+      "Data Science GQP MVP",
+      "AI Trainer, Handshake AI",
+      "Open-source contributor, B2 Foundation"
+    ],
+    "summary": "I build LLM-based applications that help people with real workflows and daily tasks. I rebuilt the search backend of Research Agent, an open-source paper search tool at the B2 Foundation, and I run blinded evaluations of AI coding agents at Handshake AI. At WPI I fine-tuned Phi-4-mini with LoRA for a credit risk Graduate Qualifying Project and co-built PRISEM, a budget-aware entity matching system. MS in Artificial Intelligence, May 2026, GPA 3.88.",
+    "story": [
+      "I build LLM-based applications that help people with real workflows and daily tasks. The goal is to assist people and ease their work, not to replace whole systems.",
+      "I would rather take one application all the way to deployable, safe and secure, with observability and guardrails, than build many prototypes that never ship. Fine-tuning, evaluation and training work support that. They are not the whole job.",
+      "Today I run blinded evaluations of AI coding agents at Handshake AI. As a volunteer at the B2 Foundation, I rebuilt the search backend of Research Agent, an open-source paper search tool. At WPI I fine-tuned Phi-4-mini with LoRA for a credit risk Graduate Qualifying Project and co-built PRISEM, a budget-aware entity matching system.",
+      "I finished my MS in Artificial Intelligence at WPI in May 2026 with a 3.88 GPA. I want to keep working on agentic AI, generative AI, AI automation, LLM fine-tuning, retrieval and evaluation."
+    ],
+    "location": {
+      "city": "San Jose",
+      "region": "CA",
+      "country": "US",
+      "display": "San Jose, CA"
+    },
+    "languages": [
+      "English",
+      "Hindi",
+      "Marathi"
+    ],
+    "portrait": {
+      "src": "/portrait/ankit-gole-960.webp",
+      "alt": "Portrait of Ankit Gole"
+    },
+    "showWorkAuthorization": true,
+    "availability": {
+      "status": "open",
+      "display": "Open to AI/ML, LLM and applied AI engineering roles anywhere in the US, including remote",
+      "workAuthorization": "OPT starting June 2026, with the 24-month STEM OPT extension available, about 3 years total. Will need H-1B sponsorship later.",
+      "roles": [
+        "AI/ML Engineer",
+        "LLM or GenAI Engineer",
+        "Applied AI Engineer",
+        "ML Research Engineer",
+        "Applied Scientist",
+        "MLOps or ML Infrastructure Engineer",
+        "LLM fine-tuning",
+        "AI evaluation"
+      ],
+      "locations": [
+        "Anywhere in the US",
+        "Remote"
+      ]
+    }
+  },
+  "links": {
+    "linkedin": "https://www.linkedin.com/in/ankit-gole/",
+    "github": "https://github.com/AnkitGole007",
+    "email": "mailto:ankit17.gole@gmail.com"
+  },
+  "now": {
+    "date": "2026-11-23",
+    "lines": [
+      "AI Trainer at Handshake AI since August 2026, ranking and grading blinded AI coding-agent runs.",
+      "AI Research Contributor at the B2 Foundation, a volunteer role on Research Agent, an open-source paper search tool.",
+      "Finished an MS in Artificial Intelligence at WPI in May 2026 with a 3.88 GPA.",
+      "Open to AI/ML, LLM and applied AI engineering roles anywhere in the US, including remote."
+    ]
+  },
+  "education": [
+    {
+      "id": "wpi",
+      "institution": "Worcester Polytechnic Institute",
+      "abbr": "WPI",
+      "degree": "Master of Science",
+      "field": "Artificial Intelligence",
+      "location": "Worcester, MA",
+      "start": "2024-08",
+      "end": "2026-05",
+      "status": "completed",
+      "gpa": "3.88",
+      "gpaScale": "4.0",
+      "url": "https://www.wpi.edu",
+      "coursework": [
+        "Large Language Models",
+        "Generative AI",
+        "Deep Learning",
+        "Natural Language Processing",
+        "MLOps"
+      ],
+      "honors": [
+        "Data Science GQP MVP, Fall 2025",
+        "3rd Best Data Science GQP Team, Fall 2025"
+      ]
+    },
+    {
+      "id": "pes",
+      "institution": "PES Modern College of Engineering",
+      "abbr": "PES",
+      "degree": "Bachelor of Engineering",
+      "field": "Information Technology",
+      "location": "Pune, India",
+      "start": "2018-06",
+      "end": "2022-08",
+      "status": "completed",
+      "gpa": null,
+      "gpaScale": null,
+      "coursework": [],
+      "honors": [],
+      "activities": [
+        "NSS Technical Team Head",
+        "President of Graphix Club"
+      ]
+    }
+  ],
+  "publications": [],
+  "research": [],
+  "experience": [
+    {
+      "id": "handshake",
+      "role": "AI Trainer",
+      "org": "Handshake AI",
+      "orgUrl": null,
+      "location": "Remote",
+      "type": "Contract",
+      "start": "2026-08",
+      "end": null,
+      "status": "ongoing",
+      "award": null,
+      "summary": "Run blinded head-to-head evaluations of two AI coding agents, verifying each build by hand before ranking and grading.",
+      "highlights": [
+        "Rank and rubric-score 20 blinded coding-agent runs across 10 tasks, re-running every build to verify claims.",
+        "Score each run on a 4-part rubric and each pair on a 7-point preference scale.",
+        "Re-ran agent builds in Docker to verify claims: 477 checks and 0 failures on one task.",
+        "Log failures on a 19-code taxonomy, catching ones a green test suite missed.",
+        "Read traces up to 5.2 MB. One agent took 167 turns where the other took 48.",
+        "Cut evaluation snapshot size 98.8%, 658 MB to 7.7 MB, and fixed a silent bind-mount bug."
+      ],
+      "tags": [
+        "LLM evaluation",
+        "pairwise preference ranking",
+        "rubric scoring",
+        "failure taxonomies",
+        "agent trace review",
+        "Docker"
+      ]
+    },
+    {
+      "id": "b2-foundation",
+      "role": "AI Research Contributor",
+      "org": "The Benevolent Bandwidth Foundation (B2 Foundation)",
+      "orgUrl": null,
+      "location": "Remote",
+      "type": "Volunteer, open source",
+      "start": "2026-02",
+      "end": null,
+      "status": "ongoing",
+      "award": null,
+      "summary": "Rebuilt the search backend of Research Agent, a free open-source tool that turns a research brief into a ranked reading list.",
+      "highlights": [
+        "Merged SQLite, FAISS and BM25 into one LanceDB index of 385,000+ papers on Google Cloud Run.",
+        "Fixed five bugs behind a 24+ minute stall and crash. Afterward: 47.7 seconds, zero errors.",
+        "Stopped Cloud Run out-of-memory crashes, with peak memory at about 55% of 8 GiB.",
+        "Sped up reranking about 3x on CPU with a 150M ModernBERT cross-encoder, MTEB 0.584 vs 0.553.",
+        "Built, not shipped: LLM-as-judge ranking evaluation, Kendall's tau 0.316 over 16 queries."
+      ],
+      "tags": [
+        "Python",
+        "FastAPI",
+        "LanceDB",
+        "SPECTER2",
+        "Google Cloud Run",
+        "Docker",
+        "GitHub Actions",
+        "pytest"
+      ]
+    },
+    {
+      "id": "wpi-yossi",
+      "role": "AI Researcher",
+      "org": "Worcester Polytechnic Institute, YOSSI Lab",
+      "orgUrl": null,
+      "location": "Worcester, MA",
+      "type": "Research role",
+      "start": "2025-08",
+      "end": "2026-03",
+      "status": "completed",
+      "award": null,
+      "summary": "Co-built PRISEM, a budget-aware entity matching demo system that splits record pairs across four cost tiers under a fixed budget.",
+      "highlights": [
+        "Co-built PRISEM, which splits record pairs across rules, an embedding model, LLMs and human review.",
+        "A rule scorer over 8 lexical features sends only uncertain pairs to costly models.",
+        "Ran 4-bit Qwen2.5-1.5B, Phi-3.5-mini and Jellyfish-8B on CPU as match scorers, with no paid APIs.",
+        "Calibrated embedding scores with isotonic regression and built the Gradio review interface.",
+        "A larger demo budget cut human review from 80 to 2 of 91 pairs."
+      ],
+      "tags": [
+        "entity matching",
+        "llama.cpp",
+        "isotonic regression",
+        "Gradio"
+      ],
+      "team": [
+        "Nicholas Pulsone"
+      ],
+      "advisors": [
+        "Prof. Roee Shraga"
+      ]
+    },
+    {
+      "id": "wpi-gla",
+      "role": "Graduate Learning Assistant, FIN3330/FIN540 Financial Analytics",
+      "org": "Worcester Polytechnic Institute",
+      "orgUrl": null,
+      "location": "Worcester, MA",
+      "type": "Teaching",
+      "start": "2026-01",
+      "end": null,
+      "status": "ongoing",
+      "award": null,
+      "summary": "Grade work that covers 90% of course weight, debug student pipelines and support students across 7 modules.",
+      "highlights": [
+        "Topics: ML in finance, backtesting, mean-variance optimization and factor models (CAPM, Fama-French).",
+        "Course data comes from WRDS, CRSP/Compustat, FRED and Yahoo Finance."
+      ],
+      "tags": [
+        "Random Forest",
+        "Gradient Boosting",
+        "Ridge and Lasso",
+        "backtesting"
+      ]
+    },
+    {
+      "id": "wpi-ga-fin530",
+      "role": "Graduate Assistant, FIN 530 Cryptocurrencies and Financial Markets",
+      "org": "Worcester Polytechnic Institute",
+      "orgUrl": null,
+      "location": "Worcester, MA",
+      "type": "Teaching",
+      "start": "2025-04",
+      "end": "2025-12",
+      "status": "completed",
+      "award": null,
+      "summary": "Ran labs on stablecoins and CBDCs with Hyperledger Fabric, Docker and Python, and handled grading and office hours.",
+      "highlights": [],
+      "tags": [
+        "Hyperledger Fabric",
+        "Docker",
+        "Python"
+      ]
+    },
+    {
+      "id": "wpi-ga-fin540",
+      "role": "Graduate Assistant, FIN 540 Financial Analytics",
+      "org": "Worcester Polytechnic Institute",
+      "orgUrl": null,
+      "location": "Worcester, MA",
+      "type": "Teaching",
+      "start": "2025-01",
+      "end": "2025-03",
+      "status": "completed",
+      "award": null,
+      "summary": "Graduate assistant for the Financial Analytics course.",
+      "highlights": [],
+      "tags": []
+    },
+    {
+      "id": "neuralseek",
+      "role": "AI Intern (AI Agent Builder)",
+      "org": "NeuralSeek",
+      "orgUrl": null,
+      "type": "Internship",
+      "start": "2025-08",
+      "end": "2025-09",
+      "status": "completed",
+      "award": null,
+      "summary": "Built natural-language AI agents on NeuralSeek's no-code generative AI platform, completed platform certifications and ran competitive analyses.",
+      "highlights": [],
+      "tags": [
+        "AI agents",
+        "generative AI"
+      ]
+    },
+    {
+      "id": "atos",
+      "role": "Systems Engineer",
+      "org": "Atos",
+      "orgUrl": null,
+      "location": "Pune, India",
+      "type": "IT operations",
+      "start": "2022-07",
+      "end": "2024-07",
+      "status": "completed",
+      "award": null,
+      "summary": "IT operations for a US client's multi-tenant service desk, and my first hands-on ML work. Title steps: Digital Workplace Trainee, then Associate Engineer, then System Engineer.",
+      "highlights": [
+        "Owned P1 and P2 escalations for Conduent's multi-tenant service desk across 5,000+ tickets at 90%+ SLA.",
+        "Automated about 25% of daily ticket work with Python and a TensorFlow classifier.",
+        "The automation covered enrichment, follow-ups and breach alerts, and cut downtime 18%."
+      ],
+      "tags": [
+        "Python",
+        "TensorFlow",
+        "service desk operations"
+      ],
+      "titles": [
+        {
+          "title": "Digital Workplace (DWP) Trainee",
+          "start": "2022-07",
+          "end": "2022-12"
+        },
+        {
+          "title": "Associate Engineer",
+          "start": "2022-11",
+          "end": "2023-08",
+          "location": "Talegaon, India"
+        },
+        {
+          "title": "System Engineer",
+          "start": "2023-08",
+          "end": "2024-07",
+          "location": "Pune, India"
+        }
+      ]
+    },
+    {
+      "id": "larsen-toubro",
+      "role": "Web Developer intern",
+      "org": "Larsen & Toubro (Defence)",
+      "orgUrl": null,
+      "location": "Remote",
+      "type": "Internship",
+      "start": "2020-08",
+      "end": "2020-11",
+      "status": "completed",
+      "award": null,
+      "summary": "Updated elements of a company portal and worked on the Defence Newsletter site as a basic UI/UX developer.",
+      "highlights": [],
+      "tags": [
+        "web development",
+        "UI/UX"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "slug": "b2-research-agent",
+      "name": "Research Agent: open-source paper search",
+      "subtitle": "Search backend rebuild for the B2 Foundation",
+      "kind": "llm-systems",
+      "featured": true,
+      "start": "2026-02",
+      "end": null,
+      "status": "ongoing",
+      "affiliation": "The Benevolent Bandwidth Foundation (B2 Foundation)",
+      "team": [
+        "Nurtekin Savas",
+        "Shan Ali Shah Sayed",
+        "Zulfa Mohamed",
+        "pavithrakumar1118",
+        "sabooshagun",
+        "eman-cickusic"
+      ],
+      "role": "AI Research Contributor (volunteer)",
+      "summary": "Research Agent turns a plain-English research need into a short ranked reading list with evidence for each paper. I rebuilt its search backend into one LanceDB index of 385,000+ papers served by FastAPI on Google Cloud Run.",
+      "pitch": {
+        "problem": "Long searches stalled for 24+ minutes and then crashed, and 50.8% of the corpus had no embeddings.",
+        "action": "Merged SQLite, FAISS and BM25 into one LanceDB index, traced the crash to five bugs, and backfilled embeddings for 196,082 rows.",
+        "change": "After the fixes, a search that had stalled 24+ minutes and crashed finished in 47.7 seconds with zero errors."
+      },
+      "problem": "Research Agent searches a stored library of about 385,000 to 390,000 computer science papers from arXiv and Semantic Scholar. Search ran across SQLite, FAISS and BM25. Long searches stalled and crashed, 50.8% of the corpus had no embeddings, and Cloud Run ran out of memory.",
+      "approach": "A query parser reads the brief, with a 4-tier fallback from Groq to OpenRouter to Ollama Cloud to rules. LanceDB hybrid full-text and vector search on Cloudflare R2 fuses results with Reciprocal Rank Fusion to 1,200 candidates. SPECTER2 reranks them to 200, then a gte-reranker-modernbert-base cross-encoder ranks the reading list and MiniLM picks evidence sentences. FastAPI streams results over Server-Sent Events.",
+      "highlights": [
+        "Merged SQLite, FAISS and BM25 into one LanceDB index of 385,000+ papers.",
+        "Traced a 24+ minute crash to five bugs in LLM timeouts and connection pooling.",
+        "After the fix, the same search finished in 47.7 seconds with zero errors.",
+        "Cut two slow queries from 185.2 s to 14.3 s and 10.4 s.",
+        "Backfilled embeddings for 196,082 rows in a 14-hour checkpointed run.",
+        "Swapped a 568M cross-encoder for a 150M ModernBERT model, about 3x faster on CPU.",
+        "The new reranker scores higher on MTEB, 0.584 vs 0.553.",
+        "Cut Cloud Run peak memory from out-of-memory crashes to about 55% of 8 GiB.",
+        "Rebuilt two broken filters that matched only 21 and 2 of about 390,000 papers.",
+        "Built, not shipped: an LLM-as-judge ranking evaluation, Kendall's tau 0.316 over 16 queries.",
+        "That evaluation caught a scoring change that would have cut tau to 0.080."
+      ],
+      "metrics": [
+        {
+          "label": "Long search, stall and crash fixed (zero errors after)",
+          "value": "24+ min to 47.7 s"
+        },
+        {
+          "label": "Papers in the corpus (2026-07-22 build)",
+          "value": "385,655"
+        },
+        {
+          "label": "Two slow queries after the embedding backfill",
+          "value": "185.2 s to 14.3 s and 10.4 s"
+        },
+        {
+          "label": "Reranker speed on CPU",
+          "value": "about 3x faster"
+        },
+        {
+          "label": "Reranker MTEB score, new vs old",
+          "value": "0.584 vs 0.553"
+        },
+        {
+          "label": "Reranker size",
+          "value": "568M to 150M parameters"
+        },
+        {
+          "label": "Cloud Run peak memory",
+          "value": "100% (OOM) to about 55% of 8 GiB"
+        },
+        {
+          "label": "Ranking baseline, Kendall's tau over 16 queries (built, not shipped)",
+          "value": "0.316"
+        },
+        {
+          "label": "NDCG@10 over 19 queries (built, not shipped)",
+          "value": "0.81"
+        }
+      ],
+      "tags": [
+        "Python",
+        "FastAPI",
+        "Server-Sent Events",
+        "LanceDB",
+        "Cloudflare R2",
+        "Reciprocal Rank Fusion",
+        "SPECTER2",
+        "cross-encoder reranking",
+        "Google Cloud Run",
+        "Docker",
+        "GitHub Actions",
+        "pytest"
+      ],
+      "repo": "https://github.com/AnkitGole007/researchagent",
+      "links": {},
+      "visual": null,
+      "video": null,
+      "recognition": null,
+      "publicationId": null,
+      "experienceId": "b2-foundation",
+      "pipeline": [
+        {
+          "label": "Papers in the corpus, 2026-07-22 build",
+          "count": 385655
+        },
+        {
+          "label": "Candidates after hybrid search and Reciprocal Rank Fusion",
+          "count": 1200
+        },
+        {
+          "label": "Papers after the SPECTER2 rerank",
+          "count": 200
+        },
+        {
+          "label": "Reading list after the cross-encoder rerank",
+          "count": null
+        }
+      ]
+    },
+    {
+      "slug": "paypal-gqp-credit-risk",
+      "name": "Credit risk LLM: Phi-4-mini on anonymized credit records",
+      "subtitle": "PayPal-sponsored WPI Graduate Qualifying Project, team of 4",
+      "kind": "llm-systems",
+      "featured": true,
+      "start": "2025-08",
+      "end": "2025-12",
+      "status": "completed",
+      "affiliation": "PayPal-sponsored WPI Graduate Qualifying Project",
+      "team": [
+        "Om Sawant",
+        "Edward Smith",
+        "Taya Yakovenko"
+      ],
+      "role": "Owned the LLM fine-tuning and the encrypted data transfer",
+      "summary": "A PayPal-sponsored WPI Graduate Qualifying Project. I fine-tuned Phi-4-mini with LoRA to score anonymized credit records as text and matched XGBoost. A re-check then showed one binary feature carries most of every model's score.",
+      "pitch": {
+        "problem": "The project tested whether an LLM can assess credit risk from 692,922 anonymized tabular records.",
+        "action": "Fine-tuned Phi-4-mini with LoRA on Azure, turning each record into a text prompt of 22 features selected from 216.",
+        "change": "Matched XGBoost while training on about 5% of the data, and a re-check traced most of every model's score to one feature."
+      },
+      "problem": "PayPal Global Credit Risk sponsored the project, titled Applications of LLM Generalization Potential for Credit Risk Assessment. The data held 692,922 anonymized records with 216 attributes, 215 features plus the label. The question was whether a fine-tuned LLM could match classic baselines, with the data moved to a GPU cluster without leakage.",
+      "approach": "I owned all the LLM fine-tuning, on Azure AI Foundry and on the WPI Turing HPC cluster with Slurm. Records became CALM-style text prompts over 22 selected features. Phi-4-mini was fine-tuned with LoRA on Azure AI Foundry. Baselines were XGBoost, random forest and SVM over 10 seeds. I moved the data to Slurm over an AES-GCM encrypted transfer. Feature selection and imputation were a teammate's work.",
+      "highlights": [
+        "Fine-tuned Phi-4-mini with LoRA on Azure, on 22 features selected from 216.",
+        "Matched XGBoost: accuracy 0.947 vs 0.944, MCC 0.835 vs 0.826.",
+        "The two scores come from different test sets, so the result is a match.",
+        "Baselines were XGBoost, random forest and SVM over 10 seeds, on 692,922 records.",
+        "Trained on about 5% of the data.",
+        "Shuffling input fields moved KS only from 0.743 to 0.733.",
+        "F1, MCC and KS held steady across cutoffs from 0.2 to 0.8 (Phi-3.5-mini).",
+        "Over 30 Phi-3.5-mini runs, accuracy averaged 0.9431 with SD 0.0023.",
+        "LoRA adapter capacity, not base model size, was the main performance limit.",
+        "Moved the data to WPI's Slurm GPU cluster over an AES-GCM encrypted transfer.",
+        "Re-check: one binary feature, attribute213, alone scores accuracy 0.9441 and MCC 0.8261.",
+        "Most of every model's score comes from that feature, a likely leak.",
+        "The feature also pointed at the 27% of good cases no model separates."
+      ],
+      "metrics": [
+        {
+          "label": "Accuracy, Phi-4-mini vs XGBoost (different test sets)",
+          "value": "0.947 vs 0.944"
+        },
+        {
+          "label": "MCC, Phi-4-mini vs XGBoost",
+          "value": "0.835 vs 0.826"
+        },
+        {
+          "label": "Anonymized records",
+          "value": "692,922"
+        },
+        {
+          "label": "One binary feature alone (attribute213), accuracy and MCC",
+          "value": "0.9441 and 0.8261"
+        },
+        {
+          "label": "KS, Phi-4-mini",
+          "value": "0.743"
+        },
+        {
+          "label": "Share of the data used for training",
+          "value": "about 5%"
+        },
+        {
+          "label": "Good cases no model separates",
+          "value": "27%"
+        }
+      ],
+      "tags": [
+        "Phi-4-mini",
+        "LoRA",
+        "Azure AI Foundry",
+        "Slurm",
+        "WPI Turing HPC",
+        "XGBoost",
+        "AES-GCM"
+      ],
+      "repo": null,
+      "links": {},
+      "visual": null,
+      "video": null,
+      "recognition": "Data Science GQP MVP and 3rd Best Data Science GQP Team, Fall 2025",
+      "publicationId": null,
+      "experienceId": null
+    },
+    {
+      "slug": "prisem",
+      "name": "PRISEM: budget-aware entity matching",
+      "subtitle": "Research demo system at the WPI YOSSI Lab",
+      "kind": "research",
+      "featured": true,
+      "start": "2025-08",
+      "end": "2026-03",
+      "status": "completed",
+      "affiliation": "Worcester Polytechnic Institute, YOSSI Lab",
+      "team": [
+        "Nicholas Pulsone"
+      ],
+      "role": "AI Researcher",
+      "summary": "PRISEM splits record pairs across four cost tiers under a fixed budget: rules, a sentence-embedding model, CPU-only quantized LLMs and human review. Uncertain pairs move up a tier, and overflow shifts to cheaper tiers to stay on budget.",
+      "pitch": {
+        "problem": "Checking every record pair with an LLM or a person costs more than a fixed budget allows.",
+        "action": "Co-built a four-tier router: rules, an embedding model, 4-bit LLMs on CPU and human review, routed by uncertainty.",
+        "change": "On a 91-pair demo, raising the budget from 150 to 250 units cut human review from 80 pairs to 2."
+      },
+      "problem": "Entity matching decides whether two records describe the same thing. LLM matchers cost money per pair, and human review costs more. A system with a fixed budget has to decide which pairs deserve the expensive check.",
+      "approach": "A rule-based scorer over 8 lexical features, such as Jaccard, Levenshtein and token sort, keeps confident pairs. The least certain go to a BGE sentence-embedding model with isotonic calibration, then to 4-bit quantized LLMs run CPU-only through llama.cpp (Qwen2.5-1.5B, Phi-3.5-mini, Jellyfish-8B), scored by reading Yes and No token log-probabilities. A Gradio interface tracks the budget live.",
+      "highlights": [
+        "Co-built PRISEM, a four-tier entity matcher that stays within a fixed budget.",
+        "A rule scorer over 8 lexical features keeps confident pairs out of costly tiers.",
+        "Turned 4-bit Qwen2.5-1.5B, Phi-3.5-mini and Jellyfish-8B into CPU-only match scorers.",
+        "Scored matches from Yes and No token log-probabilities, with no GPU or paid API.",
+        "Calibrated embedding scores with isotonic regression.",
+        "Built the Gradio review interface, so people check only uncertain matches.",
+        "A larger demo budget cut human review from 80 to 2 of 91 pairs."
+      ],
+      "metrics": [
+        {
+          "label": "Pairs flagged for human review out of 91, budget 150 then 250 units",
+          "value": "80 to 2"
+        },
+        {
+          "label": "Cost tiers",
+          "value": "4"
+        },
+        {
+          "label": "Lexical features in the rule tier",
+          "value": "8"
+        }
+      ],
+      "tags": [
+        "entity matching",
+        "llama.cpp",
+        "GGUF",
+        "Qwen2.5-1.5B",
+        "Phi-3.5-mini",
+        "Jellyfish-8B",
+        "BGE",
+        "isotonic regression",
+        "Gradio"
+      ],
+      "repo": null,
+      "links": {},
+      "visual": null,
+      "video": null,
+      "recognition": null,
+      "publicationId": null,
+      "experienceId": "wpi-yossi"
+    },
+    {
+      "slug": "handshake-eval",
+      "name": "Blinded evaluation of AI coding agents",
+      "subtitle": "Head-to-head agent evaluation at Handshake AI",
+      "kind": "evaluation",
+      "featured": true,
+      "start": "2026-08",
+      "end": null,
+      "status": "ongoing",
+      "affiliation": "Handshake AI",
+      "team": [],
+      "role": "AI Trainer",
+      "summary": "Each task gives two AI coding agents the same prompt in the same Docker container. I run both sessions, verify each build by hand, rank the pair on a 7-point preference scale and grade each on a 4-dimension rubric.",
+      "pitch": {
+        "problem": "A green test suite can hide a broken build, so agent claims need checking by hand.",
+        "action": "Ranked and rubric-scored 20 blinded coding-agent sessions across 10 tasks, re-running every build to verify agent claims.",
+        "change": "Caught failures a green suite missed, including a run where every test passed while a required field was missing."
+      },
+      "problem": "Comparing two AI coding agents means checking what each one built. A test suite can pass on broken output, and an agent's summary can claim things that are not true.",
+      "approach": "Both agents get the same prompt in the same Docker container. I run both sessions, re-run each build to verify it, rank the pair on a 7-point scale from -3 to +3 and grade each run on correctness, agent behavior, communication and code style. Failures go on a 19-code taxonomy. Tasks covered Python, Kotlin, Java with Maven, C++, GDScript and Mercurial history editing.",
+      "highlights": [
+        "Ran 20 blinded sessions across 10 tasks in Python, Java, Kotlin, C++ and GDScript.",
+        "Re-ran builds in Docker to verify claims: 477 checks, 0 failed on one task.",
+        "Logged each failure on a 19-code taxonomy.",
+        "Read session traces up to 5.2 MB to compare agent efficiency.",
+        "One agent took 167 turns and 158 tool calls, the other 48 and 40.",
+        "Cut evaluation snapshot size 98.8%, from 658 MB to 7.7 MB.",
+        "Fixed a Docker bind-mount bug that silently lost a full run.",
+        "Wrote a six-point pre-flight checklist for every session.",
+        "Caught an agent summary citing a string that was not a product name.",
+        "Delivered 763 screenshots across tasks 4 to 10."
+      ],
+      "metrics": [
+        {
+          "label": "Blinded sessions graded, across 10 tasks",
+          "value": "20"
+        },
+        {
+          "label": "Evaluation snapshot size",
+          "value": "658 MB to 7.7 MB (98.8% smaller)"
+        },
+        {
+          "label": "Verification run on one task",
+          "value": "477 checks, 0 failed"
+        },
+        {
+          "label": "Failure taxonomy",
+          "value": "19 codes"
+        },
+        {
+          "label": "Rubric dimensions",
+          "value": "4"
+        },
+        {
+          "label": "Largest session trace reviewed",
+          "value": "5.2 MB"
+        }
+      ],
+      "tags": [
+        "Docker",
+        "Python",
+        "Kotlin",
+        "Java",
+        "Maven",
+        "C++",
+        "GDScript",
+        "Mercurial",
+        "pairwise preference ranking",
+        "rubric scoring",
+        "agent trace review"
+      ],
+      "repo": null,
+      "links": {},
+      "visual": null,
+      "video": null,
+      "recognition": null,
+      "publicationId": null,
+      "experienceId": "handshake"
+    },
+    {
+      "slug": "fairness-em",
+      "name": "FairnessEM: fairness-aware entity matching",
+      "subtitle": "A fairness loss for the Ditto entity matcher",
+      "kind": "research",
+      "featured": true,
+      "start": "2026-01",
+      "end": "2026-05",
+      "status": "completed",
+      "team": [
+        "Nicholas Pulsone"
+      ],
+      "summary": "Added a PPVP fairness loss to the Ditto entity matcher in PyTorch. Across 110 runs, average group disparity fell from 0.0355 to 0.0094 at the best alpha per configuration, while F1 held near 0.82.",
+      "pitch": {
+        "problem": "An entity matcher can score a good F1 while its errors fall unevenly across groups of records.",
+        "action": "Added a PPVP fairness loss to Ditto in PyTorch and swept 11 loss weights across 10 configurations, 110 runs.",
+        "change": "Average disparity fell 74%, from 0.0355 to 0.0094 at the best weight per configuration, with F1 near 0.82."
+      },
+      "problem": "An entity matcher can reach a good F1 while its errors fall unevenly across groups of records. A fairness fix only counts if F1 holds, because a model that stops predicting matches looks fair for the wrong reason.",
+      "approach": "I added a PPVP fairness loss to the Ditto matcher in PyTorch, weighted by alpha. I ran 10 configurations at 11 alpha values, 110 runs in all, and compared average group disparity and F1 at each weight.",
+      "highlights": [
+        "Average disparity fell 0.0355 to 0.0094 (74%) at each configuration's best alpha.",
+        "Average F1 moved from 0.816 to 0.820.",
+        "Swept 10 configurations at 11 alpha values, 110 runs in all.",
+        "Flagged false fairness at alpha 1.0, where F1 collapsed to 0.0113.",
+        "Near-zero disparity there came from a model that made almost no positive predictions."
+      ],
+      "metrics": [
+        {
+          "label": "Average group disparity cut, best alpha per configuration",
+          "value": "74%"
+        },
+        {
+          "label": "Average group disparity, best alpha per configuration",
+          "value": "0.0355 to 0.0094"
+        },
+        {
+          "label": "Average F1",
+          "value": "0.816 to 0.820"
+        },
+        {
+          "label": "Runs, 10 configurations x 11 alpha values",
+          "value": "110"
+        },
+        {
+          "label": "F1 at alpha 1.0, false fairness",
+          "value": "0.0113"
+        }
+      ],
+      "tags": [
+        "PyTorch",
+        "Ditto",
+        "entity matching",
+        "fairness metrics",
+        "PPVP loss"
+      ],
+      "repo": "https://github.com/AnkitGole007/Fairness-In-Entity-Matching/tree/ag/phase3",
+      "links": {},
+      "visual": null,
+      "video": null,
+      "recognition": null,
+      "publicationId": null,
+      "experienceId": null
+    },
+    {
+      "slug": "tumorlytix",
+      "name": "TumorLytix: unsupervised brain tumor detection",
+      "subtitle": "A conditional diffusion U-Net that needs no labeled masks",
+      "kind": "computer-vision",
+      "featured": false,
+      "start": "2024-09",
+      "end": "2024-12",
+      "status": "completed",
+      "team": [],
+      "summary": "A conditional diffusion U-Net in PyTorch rebuilds a healthy version of each MRI scan, and the difference flags the tumor. No labeled masks needed. Compared against a CycleGAN baseline on 4 hand-labeled test scans.",
+      "pitch": {
+        "problem": "Supervised tumor detectors need a labeled mask for every training scan.",
+        "action": "Trained a conditional diffusion U-Net in PyTorch to rebuild each MRI scan's healthy version and flag the difference.",
+        "change": "Reached 92.17% reconstruction accuracy and lifted average precision over CycleGAN from 0.47 to 0.52 on 4 test scans."
+      },
+      "problem": "Supervised tumor detectors learn from labeled masks. This project detects tumors without them, by learning what a healthy scan looks like.",
+      "approach": "A conditional diffusion U-Net in PyTorch rebuilds the healthy version of each MRI scan. The difference between the scan and its healthy rebuild flags the tumor. A CycleGAN baseline does the same job for comparison, scored on 4 hand-labeled test scans.",
+      "highlights": [
+        "Detected tumors without labeled masks by rebuilding each scan's healthy version.",
+        "Reached 92.17% healthy-reconstruction accuracy.",
+        "Average precision 0.52 vs 0.47 for CycleGAN on 4 hand-labeled test scans.",
+        "Higher average precision than CycleGAN on 3 of 4 scans.",
+        "Average Dice was lower than CycleGAN: 0.57 vs 0.60.",
+        "4 test scans is a small sample."
+      ],
+      "metrics": [
+        {
+          "label": "Healthy-reconstruction accuracy",
+          "value": "92.17%"
+        },
+        {
+          "label": "Average precision vs CycleGAN, 4 test scans",
+          "value": "0.52 vs 0.47"
+        },
+        {
+          "label": "Average Dice vs CycleGAN, 4 test scans",
+          "value": "0.57 vs 0.60"
+        }
+      ],
+      "tags": [
+        "PyTorch",
+        "diffusion models",
+        "U-Net",
+        "CycleGAN",
+        "MRI"
+      ],
+      "repo": "https://github.com/Sonica-B/TumorLytix",
+      "links": {},
+      "visual": null,
+      "video": null,
+      "recognition": null,
+      "publicationId": null,
+      "experienceId": null
+    },
+    {
+      "slug": "fake-review-bounty-hunter",
+      "name": "Fake Review Bounty Hunter: fraud signals in Yelp reviews",
+      "subtitle": "Fraud detection with NLP and graph analytics",
+      "kind": "nlp",
+      "featured": false,
+      "start": "2025-02",
+      "end": "2025-05",
+      "status": "completed",
+      "team": [],
+      "summary": "A fraud-signal pipeline that scores reviews with DistilBERT and maps reviewer links in a Neo4j graph. On a 5,000-review Yelp sample it flagged 15% of businesses whose high ratings did not match their review sentiment.",
+      "pitch": {
+        "problem": "A business with high star ratings can have reviews whose sentiment says otherwise.",
+        "action": "Scored reviews with DistilBERT and mapped reviewer links in Neo4j, with PySpark and PostgreSQL behind it.",
+        "change": "On 5,000 Yelp reviews, it flagged 15% of businesses whose high ratings did not match their review sentiment."
+      },
+      "problem": "Star ratings and review text can disagree. A business whose high ratings do not match the sentiment of its reviews is a fraud signal worth a closer look.",
+      "approach": "DistilBERT scores the sentiment of each review. A Neo4j graph maps the links between reviewers. PySpark and PostgreSQL handle the data. The sample was 5,000 reviews drawn from a 6M-review Yelp dataset.",
+      "highlights": [
+        "Scored reviews with DistilBERT and mapped reviewer links in Neo4j.",
+        "Sampled 5,000 reviews from a 6M-review Yelp dataset.",
+        "Flagged 15% of businesses whose high ratings did not match review sentiment."
+      ],
+      "metrics": [
+        {
+          "label": "Businesses flagged, ratings vs sentiment",
+          "value": "15%"
+        },
+        {
+          "label": "Yelp reviews in the sample",
+          "value": "5,000"
+        }
+      ],
+      "tags": [
+        "DistilBERT",
+        "Neo4j",
+        "PySpark",
+        "PostgreSQL",
+        "fraud detection"
+      ],
+      "repo": "https://github.com/AnkitGole007/Fake-Review-Bounty-Hunter",
+      "links": {},
+      "visual": {
+        "src": "/projects/fake-review-bounty-hunter/review-flags.webp",
+        "alt": "Frame from the project's demo video: the Streamlit app accepts a new review and flags it twice, for a burst of positive or negative reviews in the last 48 hours and for a star rating that does not match the review."
+      },
+      "video": null,
+      "recognition": null,
+      "publicationId": null,
+      "experienceId": null
+    },
+    {
+      "slug": "realmweaver-madwe",
+      "name": "RealmWeaver-AI (MADWE): a four-agent diffusion world engine",
+      "subtitle": "Game worlds built by four generative agents and rendered in Unity",
+      "kind": "generative-ai",
+      "featured": false,
+      "start": "2025",
+      "end": "2025",
+      "status": "completed",
+      "team": [
+        "Shreya Boyane"
+      ],
+      "role": "Architecture and Integration Lead",
+      "summary": "Four agents share a neural world state graph: environment (VAE plus diffusion), assets (Stable Diffusion 1.5 with LoRA adapters per biome), characters (GAN plus RNN) and narrative (fine-tuned GPT-J). Unity renders the world.",
+      "pitch": {
+        "problem": "A game world needs terrain, assets, characters and story that fit together.",
+        "action": "Led architecture and integration: four agents on a shared world state graph, connected to Unity over named-pipe IPC.",
+        "change": "The Day 8 monitor measured about 19 to 28 FPS against a 30 FPS target, about 35 to 49 ms per frame."
+      },
+      "problem": "Generating a playable world means terrain, assets, characters and narrative have to agree with each other and reach the game engine in time.",
+      "approach": "Four agents share a neural world state graph. Wave Function Collapse assembles the tilemaps. The asset agent uses Stable Diffusion 1.5 with LoRA at rank 8, fp16 and gradient checkpointing, and is the only part that uses LangGraph. Unity talks to the agents over named-pipe IPC.",
+      "highlights": [
+        "Led architecture and integration of four agents on a shared world state graph.",
+        "Connected the agents to Unity over named-pipe IPC.",
+        "Measured about 19 to 28 FPS against a 30 FPS target on Day 8.",
+        "Frame time ran about 35 to 49 ms.",
+        "Memory held at about 6.0 to 6.5 GB of an 8 GB limit.",
+        "Agents exchanged about 190 to 300 messages per second against a 200 target."
+      ],
+      "metrics": [
+        {
+          "label": "Frame rate on Day 8, 30 FPS target",
+          "value": "about 19 to 28 FPS"
+        },
+        {
+          "label": "Frame time",
+          "value": "about 35 to 49 ms"
+        },
+        {
+          "label": "Memory, 8 GB limit",
+          "value": "about 6.0 to 6.5 GB"
+        },
+        {
+          "label": "Agent messages per second, 200 target",
+          "value": "about 190 to 300"
+        }
+      ],
+      "tags": [
+        "Stable Diffusion 1.5",
+        "LoRA",
+        "GPT-J",
+        "VAE",
+        "GAN",
+        "Wave Function Collapse",
+        "Unity",
+        "LangGraph"
+      ],
+      "repo": "https://github.com/Sonica-B/RealmWeaver-MADWE",
+      "links": {},
+      "visual": null,
+      "video": null,
+      "recognition": null,
+      "publicationId": null,
+      "experienceId": null
+    },
+    {
+      "slug": "trended-pathfinder",
+      "name": "TrendEd Pathfinder: course to job matching",
+      "subtitle": "Job recommendations from university course catalogs",
+      "kind": "nlp",
+      "featured": false,
+      "start": null,
+      "end": null,
+      "status": "completed",
+      "team": [
+        "Blake Bruell",
+        "Harrison Taylor",
+        "Shreya Boyane",
+        "Sakshi Kulkarni"
+      ],
+      "summary": "Matches university course catalogs to scraped job postings from LinkedIn, Handshake and the Adzuna API with TF-IDF, LDA topics and cosine similarity. Users rated its recommendations 4/5 for relevance on average in surveys.",
+      "pitch": {
+        "problem": "Students cannot easily see which jobs their courses prepare them for.",
+        "action": "Matched course catalogs to scraped job postings with TF-IDF, LDA topics and cosine similarity, in a team of 5.",
+        "change": "Users rated relevance 4/5 on average in surveys, though life sciences postings matched poorly."
+      },
+      "problem": "A course catalog says what a student learns. A job posting says what an employer wants. The two rarely use the same words.",
+      "approach": "Job postings came from LinkedIn, Handshake and the Adzuna API. TF-IDF and LDA topics describe each course and each posting, and cosine similarity ranks the matches.",
+      "highlights": [
+        "Average 4/5 relevance in user surveys.",
+        "Scraped postings from LinkedIn, Handshake and the Adzuna API.",
+        "The model struggled with life sciences postings."
+      ],
+      "metrics": [
+        {
+          "label": "Relevance in user surveys, average",
+          "value": "4/5"
+        }
+      ],
+      "tags": [
+        "TF-IDF",
+        "LDA",
+        "cosine similarity",
+        "web scraping",
+        "Adzuna API"
+      ],
+      "repo": "https://github.com/Sonica-B/TrendED",
+      "links": {},
+      "visual": null,
+      "video": null,
+      "recognition": null,
+      "publicationId": null,
+      "experienceId": null
+    },
+    {
+      "slug": "drag-a-gan",
+      "name": "Drag-A-GAN: a DragGAN reimplementation",
+      "subtitle": "Point-drag image editing on StyleGAN2",
+      "kind": "generative-ai",
+      "featured": false,
+      "start": "2025-02",
+      "end": "2025-05",
+      "status": "completed",
+      "team": [],
+      "summary": "A reimplementation of the DragGAN paper: StyleGAN2-based image editing where you drag points on a generated image to reshape it.",
+      "pitch": {
+        "problem": "The goal was to reproduce DragGAN, the paper's point-drag image editing on StyleGAN2.",
+        "action": "Reimplemented StyleGAN2-based point-drag image editing from the DragGAN paper.",
+        "change": "Built a reimplementation of DragGAN point-drag editing, written up in a final project report."
+      },
+      "problem": "DragGAN edits a generated image by dragging points on it. The project set out to rebuild that method from the paper.",
+      "approach": "A reimplementation of DragGAN's point-drag editing on a StyleGAN2 generator, written up in a final project report.",
+      "highlights": [
+        "Reimplemented DragGAN point-drag image editing on StyleGAN2."
+      ],
+      "metrics": [],
+      "tags": [
+        "StyleGAN2",
+        "DragGAN",
+        "GANs"
+      ],
+      "repo": "https://github.com/AnkitGole007/Drag-A-GAN",
+      "links": {},
+      "visual": {
+        "src": "/projects/drag-a-gan/stylegan2-samples.webp",
+        "alt": "Ten 128-pixel samples from the project's StyleGAN2 generator, trained on a clothing image set, as saved by generate_image.py in the repo. These are generator samples, not drag edits."
+      },
+      "video": null,
+      "recognition": null,
+      "publicationId": null,
+      "experienceId": null
+    },
+    {
+      "slug": "sd-game-assets",
+      "name": "Stable Diffusion 2D game asset generator",
+      "subtitle": "Coursework build",
+      "kind": "generative-ai",
+      "featured": false,
+      "start": null,
+      "end": null,
+      "status": "completed",
+      "affiliation": "Coursework",
+      "team": [],
+      "earlier": true,
+      "summary": "A coursework build: a Stable Diffusion 2D game asset generator.",
+      "pitch": {
+        "problem": "A coursework build.",
+        "action": "Built a Stable Diffusion 2D game asset generator.",
+        "change": "A Stable Diffusion 2D game asset generator, as a coursework build."
+      },
+      "problem": "A coursework build.",
+      "approach": "A Stable Diffusion 2D game asset generator.",
+      "highlights": [],
+      "metrics": [],
+      "tags": [
+        "Stable Diffusion"
+      ],
+      "repo": null,
+      "links": {},
+      "visual": null,
+      "video": null,
+      "recognition": null,
+      "publicationId": null,
+      "experienceId": null
+    },
+    {
+      "slug": "stylegan2-wgan-gp",
+      "name": "StyleGAN2 with WGAN-GP",
+      "subtitle": "Coursework build",
+      "kind": "generative-ai",
+      "featured": false,
+      "start": null,
+      "end": null,
+      "status": "completed",
+      "affiliation": "Coursework",
+      "team": [],
+      "earlier": true,
+      "summary": "A coursework build: StyleGAN2 with WGAN-GP.",
+      "pitch": {
+        "problem": "A coursework build.",
+        "action": "Built StyleGAN2 with WGAN-GP.",
+        "change": "StyleGAN2 with WGAN-GP, as a coursework build."
+      },
+      "problem": "A coursework build.",
+      "approach": "StyleGAN2 with WGAN-GP.",
+      "highlights": [],
+      "metrics": [],
+      "tags": [
+        "StyleGAN2",
+        "WGAN-GP"
+      ],
+      "repo": null,
+      "links": {},
+      "visual": null,
+      "video": null,
+      "recognition": null,
+      "publicationId": null,
+      "experienceId": null
+    },
+    {
+      "slug": "diffusion-face-generation",
+      "name": "Diffusion U-Net face generation",
+      "subtitle": "Coursework build",
+      "kind": "generative-ai",
+      "featured": false,
+      "start": null,
+      "end": null,
+      "status": "completed",
+      "affiliation": "Coursework",
+      "team": [],
+      "earlier": true,
+      "summary": "A coursework build: diffusion U-Net face generation.",
+      "pitch": {
+        "problem": "A coursework build.",
+        "action": "Built diffusion U-Net face generation.",
+        "change": "Diffusion U-Net face generation, as a coursework build."
+      },
+      "problem": "A coursework build.",
+      "approach": "Diffusion U-Net face generation.",
+      "highlights": [],
+      "metrics": [],
+      "tags": [
+        "diffusion U-Net"
+      ],
+      "repo": null,
+      "links": {},
+      "visual": null,
+      "video": null,
+      "recognition": null,
+      "publicationId": null,
+      "experienceId": null
+    },
+    {
+      "slug": "bookadda",
+      "name": "BookADDA: online book rental",
+      "subtitle": "Undergraduate project",
+      "kind": "other",
+      "featured": false,
+      "start": null,
+      "end": null,
+      "status": "completed",
+      "affiliation": "Undergraduate project",
+      "team": [],
+      "earlier": true,
+      "summary": "An undergraduate project: BookADDA, online book rental.",
+      "pitch": {
+        "problem": "An undergraduate project.",
+        "action": "Built BookADDA, online book rental.",
+        "change": "BookADDA, online book rental, as an undergraduate project."
+      },
+      "problem": "An undergraduate project.",
+      "approach": "Online book rental.",
+      "highlights": [],
+      "metrics": [],
+      "tags": [],
+      "repo": null,
+      "links": {},
+      "visual": null,
+      "video": null,
+      "recognition": null,
+      "publicationId": null,
+      "experienceId": null
+    },
+    {
+      "slug": "map-ar",
+      "name": "Map.AR: AR navigation",
+      "subtitle": "Undergraduate project",
+      "kind": "ar",
+      "featured": false,
+      "start": null,
+      "end": null,
+      "status": "completed",
+      "affiliation": "Undergraduate project",
+      "team": [],
+      "earlier": true,
+      "summary": "An undergraduate project: Map.AR, AR navigation with Unity and Firebase.",
+      "pitch": {
+        "problem": "An undergraduate project.",
+        "action": "Built Map.AR, AR navigation with Unity and Firebase.",
+        "change": "Map.AR, AR navigation with Unity and Firebase, as an undergraduate project."
+      },
+      "problem": "An undergraduate project.",
+      "approach": "AR navigation with Unity and Firebase.",
+      "highlights": [],
+      "metrics": [],
+      "tags": [
+        "Unity",
+        "Firebase"
+      ],
+      "repo": null,
+      "links": {},
+      "visual": null,
+      "video": null,
+      "recognition": null,
+      "publicationId": null,
+      "experienceId": null
+    }
+  ],
+  "recognition": [
+    {
+      "id": "gqp-mvp",
+      "kind": "award",
+      "title": "Data Science GQP MVP",
+      "org": "Worcester Polytechnic Institute",
+      "date": "2025",
+      "note": "MVP of the PayPal-sponsored Graduate Qualifying Project team, Fall 2025."
+    },
+    {
+      "id": "gqp-third-team",
+      "kind": "award",
+      "title": "3rd Best Data Science GQP Team",
+      "org": "Worcester Polytechnic Institute",
+      "date": "2025",
+      "note": "Awarded to the PayPal-sponsored Graduate Qualifying Project team, Fall 2025."
+    }
+  ],
+  "certifications": [
+    {
+      "title": "Supervised Learning Essential Training",
+      "issuer": null,
+      "date": null,
+      "image": null,
+      "credentialId": null
+    },
+    {
+      "title": "Generative AI for Business with Microsoft Azure OpenAI Program",
+      "issuer": null,
+      "date": null,
+      "image": null,
+      "credentialId": null
+    },
+    {
+      "title": "Microsoft AI Classroom Series",
+      "issuer": null,
+      "date": null,
+      "image": null,
+      "credentialId": null
+    },
+    {
+      "title": "Communicating with Confidence",
+      "issuer": null,
+      "date": null,
+      "image": null,
+      "credentialId": null
+    },
+    {
+      "title": "Communication within Teams",
+      "issuer": null,
+      "date": null,
+      "image": null,
+      "credentialId": null
+    }
+  ],
+  "activity": [],
+  "leadership": [],
+  "recommendations": [],
+  "writing": [
+    {
+      "title": "DeepSeek-R1: The Open-Source AI Model Shaking Up the Industry",
+      "kind": "blog post",
+      "platform": "Medium",
+      "date": null,
+      "url": null
+    }
+  ],
+  "hiddenRepos": [
+    "Multi-Agent-Research-System"
+  ],
+  "skills": {
+    "Languages and ML": [
+      "Python",
+      "PyTorch",
+      "SQL",
+      "Hugging Face Transformers",
+      "scikit-learn",
+      "TensorFlow",
+      "XGBoost",
+      "PEFT and LoRA",
+      "pandas",
+      "NumPy",
+      "4-bit quantization (GGUF, llama.cpp)",
+      "isotonic calibration"
+    ],
+    "LLMs and retrieval": [
+      "LoRA fine-tuning",
+      "RAG and retrieval",
+      "hybrid search",
+      "reranking (SPECTER2, cross-encoders)",
+      "LLM-as-judge",
+      "prompt engineering",
+      "Reciprocal Rank Fusion",
+      "multi-provider LLM fallback (Groq, OpenRouter, Ollama, OpenAI, Anthropic, Gemini, Vertex AI)",
+      "LangChain",
+      "LangGraph"
+    ],
+    "Evaluation": [
+      "pairwise preference ranking",
+      "rubric scoring",
+      "agent trace review",
+      "NDCG",
+      "Kendall's tau",
+      "failure taxonomies",
+      "Recall@k",
+      "MCC",
+      "KS",
+      "F1",
+      "multi-seed stability",
+      "threshold sweeps"
+    ],
+    "Risk modeling": [
+      "credit risk",
+      "fraud and anomaly detection",
+      "model validation",
+      "threshold tuning",
+      "fairness metrics"
+    ],
+    "Infrastructure and data": [
+      "FastAPI",
+      "Docker",
+      "Google Cloud Run",
+      "GitHub Actions CI/CD",
+      "Azure AI Foundry",
+      "Server-Sent Events",
+      "pytest",
+      "Azure ML",
+      "Slurm (WPI Turing HPC)",
+      "Cloudflare R2",
+      "AES-GCM encryption",
+      "LanceDB",
+      "Neo4j",
+      "Gradio"
+    ]
+  },
+  "coreSkills": {
+    "Languages and ML": [
+      "Python",
+      "PyTorch",
+      "SQL",
+      "Hugging Face Transformers",
+      "scikit-learn"
+    ],
+    "LLMs and retrieval": [
+      "LoRA fine-tuning",
+      "RAG and retrieval",
+      "hybrid search",
+      "reranking (SPECTER2, cross-encoders)",
+      "LLM-as-judge"
+    ],
+    "Evaluation": [
+      "pairwise preference ranking",
+      "rubric scoring",
+      "agent trace review",
+      "NDCG",
+      "Kendall's tau"
+    ],
+    "Risk modeling": [
+      "credit risk",
+      "fraud and anomaly detection",
+      "model validation",
+      "threshold tuning",
+      "fairness metrics"
+    ],
+    "Infrastructure and data": [
+      "FastAPI",
+      "Docker",
+      "Google Cloud Run",
+      "GitHub Actions CI/CD",
+      "Azure AI Foundry"
+    ]
+  },
+  "resumeMaster": {
+    "experience": [
+      {
+        "id": "handshake",
+        "max": 1,
+        "bullets": [
+          "Rank and rubric-score 20 blinded coding-agent runs across 10 tasks, re-running every build to verify claims."
+        ]
+      },
+      {
+        "id": "b2-foundation",
+        "max": 4,
+        "bullets": [
+          "Merged SQLite, FAISS and BM25 into one LanceDB index of 385,000+ papers on Google Cloud Run.",
+          "Fixed five bugs behind a 24+ minute stall and crash. Afterward: 47.7 seconds, zero errors.",
+          "Sped up reranking about 3x on CPU with a 150M ModernBERT cross-encoder, MTEB 0.584 vs 0.553.",
+          "Built, not shipped: LLM-as-judge ranking evaluation, Kendall's tau 0.316 over 16 queries."
+        ]
+      },
+      {
+        "id": "wpi-yossi",
+        "max": 3,
+        "bullets": [
+          "Co-built PRISEM, which splits record pairs across rules, an embedding model, LLMs and human review.",
+          "Ran 4-bit Qwen2.5-1.5B, Phi-3.5-mini and Jellyfish-8B on CPU as match scorers, with no paid APIs.",
+          "A larger demo budget cut human review from 80 to 2 of 91 pairs."
+        ]
+      },
+      {
+        "id": "atos",
+        "max": 1,
+        "bullets": [
+          "Automated about 25% of daily ticket work with Python and a TensorFlow classifier."
+        ]
+      }
+    ],
+    "projects": [
+      {
+        "slug": "paypal-gqp-credit-risk",
+        "max": 3,
+        "bullets": [
+          "Fine-tuned Phi-4-mini with LoRA on Azure, on 22 features selected from 216.",
+          "Matched XGBoost: accuracy 0.947 vs 0.944, MCC 0.835 vs 0.826.",
+          "Shuffling input fields moved KS only from 0.743 to 0.733."
+        ]
+      },
+      {
+        "slug": "fairness-em",
+        "max": 1,
+        "bullets": [
+          "Average disparity fell 74%, from 0.0355 to 0.0094 at the best weight per configuration, with F1 near 0.82."
+        ]
+      },
+      {
+        "slug": "realmweaver-madwe",
+        "max": 1,
+        "bullets": [
+          "Led architecture and integration: four agents on a shared world state graph, connected to Unity over named-pipe IPC."
+        ]
+      },
+      {
+        "slug": "tumorlytix",
+        "max": 1,
+        "bullets": [
+          "Reached 92.17% reconstruction accuracy and lifted average precision over CycleGAN from 0.47 to 0.52 on 4 test scans."
+        ]
+      }
+    ]
+  }
+}

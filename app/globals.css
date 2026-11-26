@@ -1,0 +1,316 @@
+@import "tailwindcss";
+
+/* ---------- Design tokens. One light theme: bone ground, chocolate ink, one moss-green accent. ----------
+   Drawn with the taste skill (direction "quiet instrument", palette "Bone, green, chocolate"; see the spec,
+   section 5). Every text pairing holds 4.5:1 or more on all three surfaces: ink 10.4, ink-2 5.8, ink-3 5.2
+   and accent 5.0 at the lowest (on --surface-sunken); white on the accent is 7.8. */
+:root {
+  --surface: #e5e1d8;
+  --surface-raised: #dad5ca;
+  --surface-sunken: #d4cec2;
+  --rule: #c9c2b4;
+  --rule-strong: #7d7062;
+  --ink: #2a1d17;
+  --ink-2: #54463d;
+  --ink-3: #5c4d43;
+  --accent: #355b2c;
+  --accent-ink: #ffffff;
+  /* The soft ink on the accent field (the numbers band): 5.1:1 on --accent. */
+  --accent-ink-2: #c9d4c6;
+  --accent-soft: rgb(53 91 44 / 0.14);
+  /* The one emphasised timeline node: full ink, so the page keeps a single accent hue. */
+  --signal: #2a1d17;
+  /* Hover and focus ring: a 2 px band of the accent, no blur. */
+  --glow: 0 0 0 2px rgb(53 91 44 / 0.4);
+  --grid-line: transparent;
+  /* No grain layer in this direction: flat bone ground. Kept at 0 for the pages that still read it. */
+  --grain-opacity: 0;
+  /* Page margin, shared by the container and anything that reaches past it to the viewport edge. */
+  --gutter: clamp(1rem, 0.4rem + 3vw, 4rem);
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-ink-2: var(--accent-ink-2);
+  --color-accent-soft: var(--accent-soft);
+  --color-signal: var(--signal);
+
+  /* Two families. EB Garamond sets the display lines and the reading text. Libre Franklin carries the
+     small print (status lines, labels, captions, the tools line), where a Garamond's small x-height
+     stops reading well. --font-small names that role. The older slot keeps its name because the
+     components use it, and holds the same Franklin: the house style has no monospace outside code. */
+  --font-display: var(--font-garamond), ui-serif, Georgia, serif;
+  --font-sans: var(--font-garamond), ui-serif, Georgia, serif;
+  --font-small: var(--font-franklin), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-franklin), ui-sans-serif, system-ui, sans-serif; /* taste-skill-ignore: Libre Franklin, not a monospace */
+
+  /* Garamond runs about two sizes small next to a grotesk, so the text steps move up one notch:
+     14 px floor, 16 px small, 18 px body. */
+  --text-xs: 0.875rem;
+  --text-xs--line-height: 1.45;
+  --text-sm: 1rem;
+  --text-sm--line-height: 1.5;
+  --text-base: 1.125rem;
+  --text-base--line-height: 1.55;
+  --text-lg: 1.25rem;
+  --text-lg--line-height: 1.5;
+
+  --radius-card: 0px;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --breakpoint-xs: 26rem;
+  --breakpoint-3xl: 110rem;
+}
+
+/* ---------- Base ---------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Anchors and focus land clear of the sticky nav: its 64 px bar and safe area, plus 16 px. */
+    scroll-padding-top: calc(4rem + 1rem + env(safe-area-inset-top, 0px));
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  @media (pointer: fine) {
+    html { overscroll-behavior: none; }
+  }
+  body {
+    background: var(--surface);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+    min-height: 100dvh;
+  }
+  ::selection { background: var(--accent); color: var(--accent-ink); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 0; }
+  /* Programmatic focus target (the island's dismiss, the skip link): the landmark itself draws no ring. */
+  #main[tabindex="-1"]:focus { outline: none; }
+  /* While the scroll island is enabled (IslandBar sets data-island) the footer keeps 3.5rem clear under its last line. */
+  :root[data-island] { --island-room: 3.5rem; }
+  /* Headings stand on size and the 500 weight; the house style sets no bold display type. */
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; text-wrap: balance; }
+  p, li, dd { text-wrap: pretty; }
+  a, button, [role="button"] { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+  img, video, canvas { display: block; max-width: 100%; height: auto; }
+  [hidden] { display: none !important; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Cross-document view transitions where supported (progressive). */
+@view-transition { navigation: auto; }
+
+/* ---------- Layout utilities ---------- */
+@utility container-site {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+/* No drawn rules between items: the class keeps its 1 px of space, transparent, so layouts that use it hold their rhythm. */
+@utility hairline { border-top: 1px solid transparent; } /* taste-skill-ignore: transparent, space only */
+@utility safe-bottom { padding-bottom: max(1.25rem, env(safe-area-inset-bottom)); }
+@utility safe-top { padding-top: max(0px, env(safe-area-inset-top)); }
+@utility press { transition: transform 150ms var(--ease-out-quart); &:active { transform: scale(0.98); } }
+
+/* ---------- Type: five steps in EB Garamond, small print in Libre Franklin ---------- */
+/* Display 36 to 72 px, headline 28 to 40, title 20 to 24, lead 20 to 26, body 18; leading 1.04 to 1.55.
+   Type-scale decision (QA, Task 11): every page's h1 is the one dominant thing on a desktop first screen.
+   The display step tops out at 72 px, so it measures 67 px (4.6vw) at 1440 and 54 px at 1024; below
+   475 px it stays at its 36 px floor. Project names, which run to 59 characters, take the display step
+   from 1024 px and keep the headline step below it, so each stays within two lines from 768 px up. */
+@utility text-display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.25rem, 1.3rem + 3.2vw, 4.5rem);
+  line-height: 1.04;
+  letter-spacing: -0.012em;
+}
+@utility text-headline {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.75rem, 1.45rem + 1.2vw, 2.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+@utility text-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.25rem, 1.15rem + 0.45vw, 1.5rem);
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+@utility text-lead {
+  font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  line-height: 1.42;
+}
+/* Group names and small headings: sentence case at 14 px, no tracking, no capitals. */
+@utility text-label {
+  font-family: var(--font-small);
+  font-size: 0.875rem;
+  line-height: 1.45;
+  letter-spacing: 0;
+}
+/* Figures in the display face with lining, tabular digits, so a number in a sentence keeps the sentence's voice. */
+@utility text-metric {
+  font-family: var(--font-display);
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: 0;
+}
+/* Status line under instruments and figures: small print in Franklin with tabular figures. */
+@utility text-status {
+  font-family: var(--font-small);
+  font-size: 0.875rem;
+  line-height: 1.45;
+  letter-spacing: 0;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--ink-2);
+}
+@utility tnum { font-variant-numeric: lining-nums tabular-nums; }
+/* Below-the-fold sections skip layout and paint until near the viewport. Skipped content stays in the DOM and the accessibility tree (MDN, content-visibility). */
+@utility cv-auto { content-visibility: auto; contain-intrinsic-size: auto 900px; }
+
+/* ---------- Instrument surfaces ---------- */
+/* An instrument sits on a tone step of its own; the class stays as the anchor for positioned children. */
+@utility hud-frame { position: relative; }
+/* Hover and focus ring for controls: a flat 2 px accent band (--glow), never a blur. */
+@utility glow { box-shadow: var(--glow); } /* taste-skill-ignore: hover and focus ring only, never at rest */
+/* Lift for what truly floats over the page (the scroll island, the search dialog, the copy failure note), never for anything at rest. */
+@utility float-lift { box-shadow: 0 8px 24px rgb(42 29 23 / 0.16); } /* taste-skill-ignore: floating overlays only */
+/* Pictures and video: square corners, no outline, sunken ground behind letterboxing. */
+@utility frame-media {
+  border: 0;
+  border-radius: 0;
+  background: var(--surface-sunken);
+}
+/* Raised panel: one tone step down from the ground, square corners. The transparent border keeps the box the same size. */
+@utility panel {
+  background: var(--surface-raised);
+  border-radius: var(--radius-card);
+  border: 1px solid transparent; /* taste-skill-ignore: transparent, keeps the box size */
+}
+
+/* ---------- Nav bar (components/site/nav.tsx) ---------- */
+/* A plain bar on the ground: no blur, no glass. The name stays for the component that sets it. */
+@utility nav-glass { background-color: var(--surface); }
+
+/* ---------- Hero (components/hero) ---------- */
+/* The hero is one grid. On phones the first screen answers who, what and whether he is looking: the
+   name, then the copy with the actions, then the credentials and availability, then the funnel, whose
+   corpus field sits in the tone panel with the stages under its edge. From md: name and field share
+   the panel row, the copy and the stages share the row under it, and the credentials run the full
+   width below both. The funnel figure spans its rows as a subgrid, so the field ends on the bottom
+   edge of the panel (the seam) and the stages start under it. */
+@utility hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto auto auto auto;
+  @media (width >= 48rem) {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: minmax(calc(44svh - 4.75rem), auto) auto auto;
+    column-gap: 1.5rem;
+  }
+}
+/* The tone panel runs edge to edge on phones and stops 12 px from the viewport edges from md, past the container gutter. */
+@utility hero-panel {
+  grid-column: 1 / -1;
+  grid-row: 4;
+  margin-inline: calc(0px - var(--gutter));
+  background: var(--surface-raised);
+  @media (width >= 48rem) { grid-row: 1; margin-inline: calc(0.75rem - var(--gutter)); }
+}
+@utility hero-name {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  @media (width >= 48rem) { grid-column: 1 / 6; align-self: end; }
+}
+@utility hero-figure {
+  grid-column: 1 / -1;
+  grid-row: 4 / 6;
+  display: grid;
+  grid-template-rows: subgrid;
+  @media (width >= 48rem) {
+    grid-column: 6 / -1;
+    grid-row: 1 / 3;
+    margin-right: calc(0.75rem - var(--gutter));
+  }
+}
+@utility hero-copy {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  @media (width >= 48rem) { grid-column: 1 / 6; grid-row: 2; }
+}
+/* Credentials and availability: under the copy on phones, so they are on the first screen; a full-width row under the hero from md. */
+@utility hero-proof {
+  grid-column: 1 / -1;
+  grid-row: 3;
+}
+
+/* ---------- Retrieval funnel (components/hero/retrieval-funnel.tsx) ---------- */
+/* While the animated layer runs a search, the static stage marks step aside at once (the canvas draws
+   them), fade back at the end, and the list marks draw in from the left when the run reaches the last
+   stage. Without the layer nothing here applies. */
+@utility funnel-mark {
+  transition: opacity 160ms var(--ease-out-quart);
+  [data-phase] & { opacity: 0; transition: none; }
+}
+@utility funnel-row {
+  transform-origin: left center;
+  transition: transform 520ms var(--ease-out-expo), opacity 160ms linear;
+  [data-phase="run"] & { opacity: 0; transform: scaleX(0); transition: none; }
+  [data-phase="list"] & { opacity: 1; transform: none; }
+}
+
+/* ---------- Timeline (components/timeline) ---------- */
+/* The rail is a 12 px channel in the raised tone and names a view timeline; a darker tone fills it from
+   the rail top at 70 percent of the viewport to the rail end at 60 percent, on the compositor. Without
+   scroll-driven animations, or with reduced motion, the channel is drawn full. */
+@keyframes rail-fill { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@utility rail-timeline { view-timeline: --rail block; }
+@utility rail-progress {
+  transform-origin: top;
+  @supports (animation-timeline: view()) {
+    animation: rail-fill linear both;
+    animation-timeline: --rail;
+    animation-range: cover 30vh cover calc(100% - 60vh);
+  }
+  @media (prefers-reduced-motion: reduce) { animation: none; transform: none; }
+}
+/* A node's detail fades down into place when the visitor opens it (not on load). */
+@keyframes panel-in { from { opacity: 0; transform: translateY(-6px); } }
+@utility panel-in {
+  animation: panel-in 280ms var(--ease-out-expo);
+  @media (prefers-reduced-motion: reduce) { animation: none; }
+}
+
+/* Reveal: respects reduced motion, and the Reveal component sets data-visible on mount if already visible. */
+@utility reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 700ms var(--ease-out-expo), transform 700ms var(--ease-out-expo);
+  &[data-visible="true"] { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce), print { opacity: 1; transform: none; transition: none; }
+  /* Without JavaScript nothing sets data-visible, so the content shows as is. */
+  @media (scripting: none) { opacity: 1; transform: none; transition: none; }
+}

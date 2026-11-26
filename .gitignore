@@ -36,3 +36,18 @@ coverage
 
 # Misc
 *.tsbuildinfo
+
+.superpowers/
+
+# Next.js
+.next/
+next-env.d.ts
+# Written by `next dev`; not part of the project
+AGENTS.md
+
+# Vercel CLI link and local certificates
+.vercel
+*.pem
+
+# Taste skill working files (direction sheet, inspector screenshots)
+.taste-skill/
